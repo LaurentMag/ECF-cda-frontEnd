@@ -1,4 +1,5 @@
-$color__background-navbar: rgb(148, 148, 179);
+$color__background-navbar: rgb(118, 118, 167);
+$nagivation-link-color-hover: rgb(189, 182, 182);
 
 .navbar {
   background-color: $color__background-navbar;
@@ -6,7 +7,8 @@ $color__background-navbar: rgb(148, 148, 179);
   align-items: center;
 
   .navlink__logo {
-    padding: min(1%, 2rem);
+    padding-inline: min(2%, 1rem);
+    padding-block: min(1%, 1em);
     figure {
       width: 90px;
     }
@@ -18,16 +20,22 @@ $color__background-navbar: rgb(148, 148, 179);
     justify-content: space-evenly;
     gap: 1rem;
 
-    width: 100%;
+    width: 80%;
 
     padding: min(2%, 20px);
   }
 
   li {
+    // change style when link is actived
     .active {
       color: $nagivation-link-color-hover;
     }
   }
+}
+
+.text-link {
+  color: inherit;
+  text-decoration: none;
 }
 
 .navlink__active {

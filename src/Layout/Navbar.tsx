@@ -16,14 +16,26 @@ export const Navbar = () => {
         </figure>
       </NavLink>
       <ul>
+        {/* <li>
+          <NavLink
+            to="/"
+            className="text-link">
+            Home
+          </NavLink>
+        </li> */}
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink
+            to="vehicules"
+            className="text-link">
+            Nos Vehicules
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/vehicules"> Nos Vehicules</NavLink>
-        </li>
-        <li>
-          <NavLink to="/clients"> Nos Clients</NavLink>
+          <NavLink
+            to="clients"
+            className="text-link">
+            Nos Clients
+          </NavLink>
         </li>
       </ul>
     </nav>

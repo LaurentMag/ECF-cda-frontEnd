@@ -34,6 +34,13 @@ a {
   }
 }
 
+a:hover,
+a:active,
+a:focus {
+  color: rgb(34, 34, 34);
+  text-decoration: none;
+}
+
 // ---------------------------------------------------------------------------
 
 ul,
@@ -62,6 +69,13 @@ html {
 }
 
 // ---------------------------------------------------------------------------
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
 
 .general_image {
   width: 100%;
