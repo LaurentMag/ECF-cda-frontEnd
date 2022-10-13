@@ -27,6 +27,22 @@ export const Clients = () => {
   };
 
   // ------------------------------------------------------------------
+
+  // ------------------------------------------------------------------
+
+  // ------------------------------------------------------------------
+
+  /**
+   * Delete selected Client :
+   * retrive id sent from clientUnit child delete button press
+   * This id is sent to the dataservice delete method to know which client to delete
+   * @param id client id coming from clientUnit map
+   */
+  const dataDelete = (id: number) => {
+    dataServices.deleteData(URLclient, id).then(() => dataFetch());
+  };
+
+  // ------------------------------------------------------------------
   // ------------------------------------------------------------------
   return (
     <Fragment>
@@ -45,6 +61,7 @@ export const Clients = () => {
                 dateDeNaissance={client.dateDeNaissance}
                 email={client.email}
                 telephone={client.telephone}
+                dataDelete={dataDelete}
               />
             );
           })}

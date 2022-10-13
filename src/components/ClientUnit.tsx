@@ -1,7 +1,32 @@
-import React from "react";
+import React, {useState} from "react";
 import {clientType} from "../type/clientType";
 
-export const ClientUnit = (props: clientType) => {
+type propType = {
+  id: number;
+  nom: string;
+  prenom: string;
+  dateDeNaissance: string;
+  email: string;
+  telephone: string;
+  dataDelete: Function;
+};
+
+export const ClientUnit = (props: propType) => {
+  const [isEdit, setIsEdit] = useState<boolean>(false);
+  // ------------------------------------------------------------------
+
+  /**
+   * on click change boolean state to trigger the edit mode
+   * if isEdit is true
+   * @returns setState change
+   */
+  const handleEdit = () => setIsEdit((prev) => !prev);
+  // ------------------------------------------------------------------
+
+  const handleDeletion = () => {
+    props.dataDelete(props.id);
+  };
+
   // ------------------------------------------------------------------
   // ------------------------------------------------------------------
   return (
@@ -13,8 +38,8 @@ export const ClientUnit = (props: clientType) => {
       <p>Telephone: {props.telephone}</p>
 
       <section>
-        <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={handleEdit}>Edit</button>
+        <button onClick={handleDeletion}>Delete</button>
       </section>
     </section>
   );
