@@ -3,7 +3,18 @@ import {NavLink} from "react-router-dom";
 
 export const Navbar = () => {
   return (
-    <nav>
+    <nav className="navbar">
+      <NavLink
+        to="/"
+        className="navlink__logo">
+        <figure>
+          <img
+            className="general_image"
+            src={require("../assets/localib-logo-nobg.png")}
+            alt=""
+          />
+        </figure>
+      </NavLink>
       <ul>
         <li>
           <NavLink to="/">Home</NavLink>

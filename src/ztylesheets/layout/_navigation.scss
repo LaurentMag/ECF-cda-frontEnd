@@ -1,0 +1,41 @@
+$color__background-navbar: rgb(148, 148, 179);
+
+.navbar {
+  background-color: $color__background-navbar;
+  display: flex;
+  align-items: center;
+
+  .navlink__logo {
+    padding: min(1%, 2rem);
+    figure {
+      width: 90px;
+    }
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+
+    width: 100%;
+
+    padding: min(2%, 20px);
+  }
+
+  li {
+    .active {
+      color: $nagivation-link-color-hover;
+    }
+  }
+}
+
+.navlink__active {
+  text-decoration: none;
+  color: white;
+}
+
+.navlink__Notactive {
+  text-decoration: none;
+  color: rgb(87, 173, 190);
+}
