@@ -22,15 +22,20 @@ export const VehiculeInput = (props: propsType) => {
   // set client without ID and get value sent from props allow to have a moduable input component
   // and use it as much for client creation and client edition ( since all input will be the sames )
   const [inputState, setInputState] = useState<vehicleTypeNoID>({
-    marque: "",
-    immatriculation: "",
-    etat: "",
-    prixJournee: 0,
-    disponible: true,
-    type: "",
+    marque: props.marque,
+    immatriculation: props.immatriculation,
+    etat: props.etat,
+    prixJournee: props.prixJournee,
+    disponible: props.disponible,
+    type: props.type,
   });
 
   // ------------------------------------------------------------------
+  /**
+   *  get input target name, which will be associated with his key on the state object, and
+   * update the corresponding value
+   * @param e event from onChange method
+   */
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target;
     setInputState((prev) => {
@@ -42,11 +47,19 @@ export const VehiculeInput = (props: propsType) => {
   };
 
   // ------------------------------------------------------------------
+  /**
+   *    once the form is submit, it send the state content to the
+   * corresponding method, which will then send it to the proper service method
+   * @param e event coming from form submit event
+   */
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     props.addData(inputState);
   };
+
+  // ------------------------------------------------------------------
+  // ------------------------------------------------------------------
   return (
     <Fragment>
       <section className={`${props.styleTopWrapper}`}>
@@ -61,9 +74,8 @@ export const VehiculeInput = (props: propsType) => {
                 onChange={handleInputChange}
                 id="marqueID"
                 type="text"
-                name="marque">
-                value={}
-              </input>
+                name="marque"
+                value={inputState.marque}></input>
             </div>
 
             <div className={`${props.styleInputAndLabel}`}>
@@ -72,9 +84,8 @@ export const VehiculeInput = (props: propsType) => {
                 onChange={handleInputChange}
                 id="immatriculationID"
                 type="text"
-                name="immatriculation">
-                value={}
-              </input>
+                name="immatriculation"
+                value={inputState.immatriculation}></input>
             </div>
           </section>
 
@@ -85,9 +96,8 @@ export const VehiculeInput = (props: propsType) => {
                 onChange={handleInputChange}
                 id="etatID"
                 type="text"
-                name="dateDeetat">
-                value={}
-              </input>
+                name="dateDeetat"
+                value={inputState.etat}></input>
             </div>
 
             <div className={`${props.styleInputAndLabel}`}>
@@ -96,9 +106,8 @@ export const VehiculeInput = (props: propsType) => {
                 onChange={handleInputChange}
                 id="prixID"
                 type="number"
-                name="prix">
-                value={}
-              </input>
+                name="prix"
+                value={inputState.prixJournee}></input>
             </div>
           </section>
 
@@ -109,7 +118,8 @@ export const VehiculeInput = (props: propsType) => {
                 onChange={handleInputChange}
                 id="disponibleID"
                 type="checkbox"
-                name="disponible"></input>
+                name="disponible"
+                checked={inputState.disponible}></input>
             </div>
 
             <div className={`${props.styleInputAndLabel}`}>
@@ -118,7 +128,8 @@ export const VehiculeInput = (props: propsType) => {
                 onChange={handleInputChange}
                 id="typeID"
                 type="text"
-                name="type"></input>
+                name="type"
+                value={inputState.type}></input>
             </div>
           </section>
 

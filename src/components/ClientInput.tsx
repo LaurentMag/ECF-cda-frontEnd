@@ -29,6 +29,11 @@ export const ClientInput = (props: propsType) => {
   });
 
   // ------------------------------------------------------------------
+  /**
+   *  get input target name, which will be associated with his key on the state object, and
+   * update the corresponding value
+   * @param e event from onChange method
+   */
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target;
     setInputState((prev) => {
@@ -40,6 +45,11 @@ export const ClientInput = (props: propsType) => {
   };
 
   // ------------------------------------------------------------------
+  /**
+   *    once the form is submit, it send the state content to the
+   * corresponding method, which will then send it to the proper service method
+   * @param e event coming from form submit event
+   */
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
@@ -62,7 +72,8 @@ export const ClientInput = (props: propsType) => {
                 onChange={handleInputChange}
                 id="nomID"
                 type="text"
-                name="nom"></input>
+                name="nom"
+                value={inputState.nom}></input>
             </div>
 
             <div className={`${props.styleInputAndLabel}`}>
@@ -71,7 +82,8 @@ export const ClientInput = (props: propsType) => {
                 onChange={handleInputChange}
                 id="prenomID"
                 type="text"
-                name="prenom"></input>
+                name="prenom"
+                value={inputState.prenom}></input>
             </div>
           </section>
 
@@ -82,7 +94,8 @@ export const ClientInput = (props: propsType) => {
                 onChange={handleInputChange}
                 id="naissanceID"
                 type="date"
-                name="dateDeNaissance"></input>
+                name="dateDeNaissance"
+                value={inputState.dateDeNaissance}></input>
             </div>
 
             <div className={`${props.styleInputAndLabel}`}>
@@ -91,7 +104,8 @@ export const ClientInput = (props: propsType) => {
                 onChange={handleInputChange}
                 id="emailID"
                 type="email"
-                name="email"></input>
+                name="email"
+                value={inputState.email}></input>
             </div>
 
             <div className={`${props.styleInputAndLabel}`}>
@@ -100,7 +114,8 @@ export const ClientInput = (props: propsType) => {
                 onChange={handleInputChange}
                 id="telID"
                 type="text"
-                name="telephone"></input>
+                name="telephone"
+                value={inputState.telephone}></input>
             </div>
           </section>
 

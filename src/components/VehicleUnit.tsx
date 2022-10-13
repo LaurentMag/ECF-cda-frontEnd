@@ -27,10 +27,18 @@ export const VehicleUnit = (props: propsType) => {
   const handleEdit = () => setIsEdit((prev) => !prev);
   // ------------------------------------------------------------------
 
+  /**
+   * get selected vehicle ID, will be send to
+   * the functin calling the deletion method from dataServices
+   */
   const handleDeletion = () => {
     props.dataDelete(props.id);
   };
 
+  /**
+   *  send data from input edit mode to the patch to udpate informations
+   * @param data Once submit, change the edit value to close the edit mode
+   */
   const dataToUpdate = (data: vehicleTypeNoID) => {
     /* It's a function that is not implemented yet. */
     props.dataToPatch(props.id, data);
@@ -56,12 +64,12 @@ export const VehicleUnit = (props: propsType) => {
           styleFormContainer={""}
           styleInputAndLabel={"label-input"}
           /* CLIENT DATA */
-          marque={""}
-          immatriculation={""}
-          etat={""}
-          prixJournee={0}
-          disponible={true}
-          type={""}
+          marque={props.marque}
+          immatriculation={props.immatriculation}
+          etat={props.etat}
+          prixJournee={props.prixJournee}
+          disponible={props.disponible}
+          type={props.type}
           /* work on data */
           addData={dataToUpdate}
         />
