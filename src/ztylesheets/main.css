@@ -1,3 +1,5 @@
+/* BUTTON PRESS EFFECT */
+/* FLEX */
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -373,6 +375,14 @@ html {
   color: unset;
 }
 
+* {
+  font-size: 1rem;
+}
+
+body {
+  background-color: rgb(234, 231, 231);
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -438,16 +448,63 @@ body {
   color: rgb(87, 173, 190);
 }
 
-* {
+.general-button {
+  border: none;
+  padding: 0.6rem;
+  border-radius: 5px;
+  background-color: rgb(237, 237, 237);
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.373);
+}
+.general-button:hover {
+  cursor: pointer;
+}
+.general-button:active {
+  transform: translateY(1.3%) scale(98.5%);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.373);
+}
+
+.client-unit__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 0;
+  flex-wrap: wrap;
+  margin-block: 15px;
+  padding: 20px;
+  background-color: rgb(187, 187, 187);
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.465);
+  width: min(95%, 50rem);
+}
+.client-unit__container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+.client-unit__container div p {
   font-size: 1rem;
+  font-weight: 900;
+  color: rgb(107, 107, 107);
+}
+.client-unit__container div p span {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgb(45, 36, 36);
+}
+.client-unit__container section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0;
 }
 
 .homepage__temp {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-self: center;
-  background-color: rgb(234, 231, 231);
+  align-items: center;
+  gap: 0;
 }
 .homepage__temp div {
   -webkit-padding-before: 25%;
@@ -458,4 +515,12 @@ body {
   font-size: 2rem;
   font-weight: 900;
   color: rgb(141, 68, 68);
+}
+
+.client__display-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  background-color: rgb(234, 231, 231);
 }/*# sourceMappingURL=main.css.map */

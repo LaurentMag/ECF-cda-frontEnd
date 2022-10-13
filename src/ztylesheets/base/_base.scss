@@ -69,6 +69,14 @@ html {
 }
 
 // ---------------------------------------------------------------------------
+* {
+  font-size: 1rem;
+}
+
+body {
+  background-color: $color__background-default;
+}
+
 a:hover {
   text-decoration: none;
 }

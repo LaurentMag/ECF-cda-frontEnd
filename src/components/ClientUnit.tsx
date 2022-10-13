@@ -31,15 +31,37 @@ export const ClientUnit = (props: propType) => {
   // ------------------------------------------------------------------
   return (
     <section className="client-unit__container">
-      <p>Nom: {props.nom}</p>
-      <p>Prenom: {props.prenom}</p>
-      <p>date de naissance: {props.dateDeNaissance}</p>
-      <p>Email: {props.email}</p>
-      <p>Telephone: {props.telephone}</p>
+      <div>
+        <p>
+          Nom: <span>{props.nom}</span>
+        </p>
+        <p>
+          Prenom: <span>{props.prenom}</span>
+        </p>
+      </div>
+      <div>
+        <p>
+          Naissance: <span>{props.dateDeNaissance}</span>
+        </p>
+        <p>
+          Email: <span>{props.email}</span>
+        </p>
+        <p>
+          Telephone: <span>{props.telephone}</span>
+        </p>
+      </div>
 
       <section>
-        <button onClick={handleEdit}>Edit</button>
-        <button onClick={handleDeletion}>Delete</button>
+        <button
+          className="general-button"
+          onClick={handleEdit}>
+          Edit
+        </button>
+        <button
+          className="general-button"
+          onClick={handleDeletion}>
+          Delete
+        </button>
       </section>
     </section>
   );

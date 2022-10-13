@@ -1,0 +1,11 @@
+.general-button {
+  border: none;
+  padding: 0.6rem;
+  border-radius: 5px;
+
+  background-color: rgb(237, 237, 237);
+
+  box-shadow: 2px 4px 6px $button-comp-box-shadow-color;
+
+  @include button-press-effect(1px 2px 4px $button-comp-box-shadow-color);
+}

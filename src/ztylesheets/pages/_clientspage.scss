@@ -1,0 +1,5 @@
+.client__display-container {
+  @include flex-modulable(column, null, center);
+
+  background-color: $color__background-default;
+}

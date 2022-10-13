@@ -1,15 +1,7 @@
-* {
-  font-size: 1rem;
-}
-
 .homepage__temp {
   height: 100vh;
 
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-
-  background-color: $color__background-default;
+  @include flex-modulable(column, null, center);
 
   div {
     padding-block-start: 25%;

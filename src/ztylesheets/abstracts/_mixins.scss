@@ -32,3 +32,27 @@
   }
 }
 
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+
+/* BUTTON PRESS EFFECT */
+@mixin button-press-effect($box-shadow) {
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    transform: translateY(1.3%) scale(98.5%);
+    box-shadow: $box-shadow;
+  }
+}
+
+/* FLEX */
+@mixin flex-modulable($direction: null, $justify: null, $align: null, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+  @content;
+}
