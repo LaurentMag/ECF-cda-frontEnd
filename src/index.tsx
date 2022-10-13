@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 //
-import "./stylesheets/main.css";
+import "./ztylesheets/main.css";
 //
 import App from "./App";
 
