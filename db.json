@@ -44,15 +44,6 @@
   "voitures": [
     {
       "id": 0,
-      "marque": "renault",
-      "immatriculation": "AA-001-AA",
-      "etat": "A",
-      "prixJournee": 400,
-      "disponible": true,
-      "type": "voiture"
-    },
-    {
-      "id": 0,
       "marque": "Peugeot",
       "immatriculation": "PE-101-GO",
       "etat": "B",

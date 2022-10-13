@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import {vehicleTypeNoID} from "../type/vehicleType";
 
 type propsType = {
@@ -22,12 +22,12 @@ export const VehiculeInput = (props: propsType) => {
   // set client without ID and get value sent from props allow to have a moduable input component
   // and use it as much for client creation and client edition ( since all input will be the sames )
   const [inputState, setInputState] = useState<vehicleTypeNoID>({
-    marque: "string",
-    immatriculation: "string",
-    etat: "string",
+    marque: "",
+    immatriculation: "",
+    etat: "",
     prixJournee: 0,
     disponible: true,
-    type: "string",
+    type: "",
   });
 
   // ------------------------------------------------------------------
@@ -36,7 +36,7 @@ export const VehiculeInput = (props: propsType) => {
     setInputState((prev) => {
       return {
         ...prev,
-        [input.name]: input.value,
+        [input.name]: input.type === "checkbox" ? input.checked : input.value,
       };
     });
   };
@@ -45,7 +45,7 @@ export const VehiculeInput = (props: propsType) => {
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    //props.addData(inputState);
+    props.addData(inputState);
   };
   return (
     <Fragment>
@@ -56,50 +56,69 @@ export const VehiculeInput = (props: propsType) => {
           className={`${props.styleFormContainer}`}>
           <section>
             <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="nomID">Nom : </label>
+              <label htmlFor="marqueID">Marque : </label>
               <input
                 onChange={handleInputChange}
-                id="nomID"
+                id="marqueID"
                 type="text"
-                name="nom"></input>
+                name="marque">
+                value={}
+              </input>
             </div>
 
             <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="prenomID">Prenom : </label>
+              <label htmlFor="immatriculationID">Immatriculation : </label>
               <input
                 onChange={handleInputChange}
-                id="prenomID"
+                id="immatriculationID"
                 type="text"
-                name="prenom"></input>
+                name="immatriculation">
+                value={}
+              </input>
             </div>
           </section>
 
           <section>
             <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="naissanceID"> Naissance : </label>
+              <label htmlFor="etatID"> etat : </label>
               <input
                 onChange={handleInputChange}
-                id="naissanceID"
-                type="date"
-                name="dateDeNaissance"></input>
-            </div>
-
-            <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="emailID"> Email : </label>
-              <input
-                onChange={handleInputChange}
-                id="emailID"
-                type="email"
-                name="email"></input>
-            </div>
-
-            <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="telID"> Téléphone : </label>
-              <input
-                onChange={handleInputChange}
-                id="telID"
+                id="etatID"
                 type="text"
-                name="telephone"></input>
+                name="dateDeetat">
+                value={}
+              </input>
+            </div>
+
+            <div className={`${props.styleInputAndLabel}`}>
+              <label htmlFor="prixID"> Prix journée : </label>
+              <input
+                onChange={handleInputChange}
+                id="prixID"
+                type="number"
+                name="prix">
+                value={}
+              </input>
+            </div>
+          </section>
+
+          <section>
+            <div className={``}>
+              <label htmlFor="disponibleID"> Disponibilité : </label>
+              <input
+                onChange={handleInputChange}
+                id="disponibleID"
+                type="checkbox"
+                name="disponible"></input>
+            </div>
+
+            <div className={`${props.styleInputAndLabel}`}>
+              <label htmlFor="typeID"> Type : </label>
+              <input
+                onChange={handleInputChange}
+                id="typeID"
+                type="text"
+                name="type"></input>
             </div>
           </section>
 

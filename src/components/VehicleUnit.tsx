@@ -1,5 +1,6 @@
 import React, {Fragment, useState} from "react";
 import {vehicleTypeNoID} from "../type/vehicleType";
+import {VehiculeInput} from "./VehiculeInput";
 
 type propsType = {
   id: number;
@@ -11,6 +12,7 @@ type propsType = {
   type: string;
   //
   dataDelete: Function;
+  dataToPatch: Function;
 };
 
 export const VehicleUnit = (props: propsType) => {
@@ -30,8 +32,9 @@ export const VehicleUnit = (props: propsType) => {
   };
 
   const dataToUpdate = (data: vehicleTypeNoID) => {
-    //props.dataToPatch(props.id, data);
-    //setIsEdit((prev) => !prev);
+    /* It's a function that is not implemented yet. */
+    props.dataToPatch(props.id, data);
+    setIsEdit((prev) => !prev);
   };
 
   return (
@@ -43,14 +46,35 @@ export const VehicleUnit = (props: propsType) => {
           alt=""
         />
       </figure>
-      <section>
-        <p>Marque : {props.marque}</p>
-        <p>Immatriculation : {props.immatriculation}</p>
-        <p>Etat : {props.etat}</p>
-        <p>Prix : {props.prixJournee}</p>
-        <p>Disponibilité : {props.disponible ? "disponible" : "Loué"}</p>
-        <p>Type : {props.type}</p>
-      </section>
+
+      {isEdit ? (
+        <VehiculeInput
+          /* TEXT */
+          headerText="Nouveau Vehicule : "
+          /* STYLE */
+          styleTopWrapper={""}
+          styleFormContainer={""}
+          styleInputAndLabel={"label-input"}
+          /* CLIENT DATA */
+          marque={""}
+          immatriculation={""}
+          etat={""}
+          prixJournee={0}
+          disponible={true}
+          type={""}
+          /* work on data */
+          addData={dataToUpdate}
+        />
+      ) : (
+        <section>
+          <p>Marque : {props.marque}</p>
+          <p>Immatriculation : {props.immatriculation}</p>
+          <p>Etat : {props.etat}</p>
+          <p>Prix : {props.prixJournee}</p>
+          <p>Disponibilité : {props.disponible ? "disponible" : "Loué"}</p>
+          <p>Type : {props.type}</p>
+        </section>
+      )}
 
       <section>
         <button
