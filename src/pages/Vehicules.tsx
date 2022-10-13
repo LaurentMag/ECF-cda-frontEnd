@@ -39,6 +39,11 @@ export const Vehicules = () => {
   };
   // ----------------------------------------------------------------------------
 
+  /**
+   *
+   * @param id id of the selected Vehicle object
+   * @param data data coming from edit mode to patch and update somes informations
+   */
   const dataPatch = (id: number, data: any) => {
     dataServices.patchData(URLvoiture, id, data).then(() => dataFetch());
   };
