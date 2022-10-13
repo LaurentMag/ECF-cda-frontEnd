@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, Fragment} from "react";
 import {vehicleType, vehicleTypeNoID} from "../type/vehicleType";
 import {randomNumber} from "../services/tools";
 import {dataServices} from "../services/dataServices";
+import {VehicleUnit} from "../components/VehicleUnit";
 
 const URLvoiture: string = "http://localhost:3000/voitures";
 
 export const Vehicules = () => {
-  const [clientList, setClientList] = useState<vehicleType[]>();
+  const [vehiculeList, setVehiculeList] = useState<vehicleType[]>();
   /**
    * useEffect used to trigger a data fetch, only the first component is created.
    */
@@ -19,7 +20,7 @@ export const Vehicules = () => {
    * Fetch data using dataservices method, then set data in the react state
    */
   const dataFetch = () => {
-    dataServices.fetchData(URLvoiture).then((data) => setClientList(data));
+    dataServices.fetchData(URLvoiture).then((data) => setVehiculeList(data));
   };
 
   // ----------------------------------------------------------------------------
@@ -55,5 +56,25 @@ export const Vehicules = () => {
 
   // ----------------------------------------------------------------------------
   // ----------------------------------------------------------------------------
-  return <div>Vehicules</div>;
+  return (
+    <Fragment>
+      <section className="vehicle__display-container">
+        {vehiculeList &&
+          vehiculeList.map((vehicule) => {
+            return (
+              <VehicleUnit
+                id={vehicule.id}
+                marque={vehicule.marque}
+                immatriculation={vehicule.immatriculation}
+                etat={vehicule.etat}
+                prixJournee={vehicule.prixJournee}
+                disponible={vehicule.disponible}
+                type={vehicule.type}
+                dataDelete={dataDelete}
+              />
+            );
+          })}
+      </section>
+    </Fragment>
+  );
 };

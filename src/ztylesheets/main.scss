@@ -13,10 +13,10 @@
 @import "layout/navigation";
 
 // 5. Components
-@import "components/button", "components/clientunit", "components/clientinput";
+@import "components/button", "components/clientunit", "components/clientinput", "components/vehiculeUnit";
 
 // 6. Page-specific styles
-@import "pages/home", "pages/clientspage";
+@import "pages/home", "pages/clientspage", "pages/vehiclepage";
 
 // 7. Themes
 // @import "themes/default";

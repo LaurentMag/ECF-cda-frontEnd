@@ -565,6 +565,27 @@ body {
   outline: 3px solid rgb(78, 78, 78);
 }
 
+.Vehicle__unit-main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-block: 20px;
+  margin-block: 12px;
+  padding-block: 15px;
+  padding-inline: 5%;
+  background-color: rgb(187, 187, 187);
+  border-radius: 10px;
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.465);
+  width: min(95%, 50rem);
+}
+.Vehicle__unit-main-container figure {
+  width: 200px;
+}
+.Vehicle__unit-main-container figure img {
+  border-radius: 10px;
+}
+
 .homepage__temp {
   height: 100vh;
   display: flex;
@@ -588,5 +609,11 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0;
-  background-color: rgb(234, 231, 231);
+}
+
+.vehicle__display-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
 }/*# sourceMappingURL=main.css.map */

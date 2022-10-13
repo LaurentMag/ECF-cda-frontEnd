@@ -2,11 +2,11 @@
   "clients": [
     {
       "id": 0,
-      "nom": "",
-      "prenom": "",
-      "dateDeNaissance": "",
-      "email": "",
-      "telephone": 0
+      "nom": "Robert",
+      "prenom": "Toutpres",
+      "dateDeNaissance": "1950/09/24",
+      "email": "robertToutpres@gmail.com",
+      "telephone": "O6O1O1O1O1"
     },
     {
       "id": 1,
