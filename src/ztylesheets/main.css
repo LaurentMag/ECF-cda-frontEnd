@@ -429,8 +429,25 @@ body {
   width: 80%;
   padding: min(2%, 20px);
 }
+.navbar li a {
+  position: relative;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: rgb(206, 206, 206);
+}
 .navbar li .active {
-  color: rgb(189, 182, 182);
+  isolation: isolate;
+  color: rgb(46, 46, 46);
+}
+.navbar li .active::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  width: 100%;
+  height: 5px;
+  background-color: rgb(46, 46, 46);
+  bottom: -50%;
+  left: 0;
 }
 
 .text-link {
@@ -466,11 +483,12 @@ body {
 .client-unit__container {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  gap: 0;
+  justify-content: space-between;
+  gap: 1rem;
   flex-wrap: wrap;
-  margin-block: 15px;
-  padding: 20px;
+  margin-block: 12px;
+  padding-block: 15px;
+  padding-inline: 5%;
   background-color: rgb(187, 187, 187);
   border-radius: 10px;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.465);
@@ -488,7 +506,7 @@ body {
   color: rgb(107, 107, 107);
 }
 .client-unit__container div p span {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
   color: rgb(45, 36, 36);
 }

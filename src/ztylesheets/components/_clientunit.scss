@@ -1,9 +1,10 @@
 .client-unit__container {
-  @include flex-modulable(row, space-evenly);
+  @include flex-modulable(row, space-between, null, 1rem);
   flex-wrap: wrap;
 
-  margin-block: 15px;
-  padding: 20px;
+  margin-block: 12px;
+  padding-block: 15px;
+  padding-inline: 5%;
 
   background-color: rgb(187, 187, 187);
   border-radius: 10px;
@@ -16,7 +17,7 @@
 
     p {
       span {
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 500;
         color: rgb(45, 36, 36);
       }

@@ -1,4 +1,5 @@
 import React, {Fragment, useEffect, useState} from "react";
+import {ClientInput} from "../components/ClientInput";
 import {ClientUnit} from "../components/ClientUnit";
 //
 import {dataServices} from "../services/dataServices";
@@ -47,6 +48,17 @@ export const Clients = () => {
   return (
     <Fragment>
       <section className="client__display-container">
+        <ClientInput
+          /* STYLE */
+          styleFormContainer={""}
+          styleInputAndLabel={""}
+          /* CLIENT DATA */
+          nom={""}
+          prenom={""}
+          dateDeNaissance={""}
+          email={""}
+          telephone={0}
+        />
         {/* 
           check first if clientList isnt null / empty. if not trigger display ( && )
           prevent potential error if async fetch isnt done when comp is created

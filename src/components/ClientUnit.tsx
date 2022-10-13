@@ -7,7 +7,7 @@ type propType = {
   prenom: string;
   dateDeNaissance: string;
   email: string;
-  telephone: string;
+  telephone: number;
   dataDelete: Function;
 };
 

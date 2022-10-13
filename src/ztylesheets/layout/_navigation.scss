@@ -1,6 +1,3 @@
-$color__background-navbar: rgb(118, 118, 167);
-$nagivation-link-color-hover: rgb(189, 182, 182);
-
 .navbar {
   background-color: $color__background-navbar;
   display: flex;
@@ -26,9 +23,29 @@ $nagivation-link-color-hover: rgb(189, 182, 182);
   }
 
   li {
+    a {
+      position: relative;
+
+      font-size: 1.3rem;
+      font-weight: 900;
+
+      color: rgb(206, 206, 206);
+    }
     // change style when link is actived
     .active {
+      isolation: isolate;
       color: $nagivation-link-color-hover;
+
+      &::after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        width: 100%;
+        height: 5px;
+        background-color: $nagivation-link-color-hover;
+        bottom: -50%;
+        left: 0;
+      }
     }
   }
 }

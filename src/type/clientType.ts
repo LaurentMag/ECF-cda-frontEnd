@@ -4,5 +4,13 @@ export type clientType = {
   prenom: string;
   dateDeNaissance: string;
   email: string;
-  telephone: string;
+  telephone: number;
+};
+
+export type clientTypeNoID = {
+  nom: string;
+  prenom: string;
+  dateDeNaissance: string;
+  email: string;
+  telephone: number;
 };
