@@ -440,4 +440,22 @@ body {
 
 * {
   font-size: 1rem;
+}
+
+.homepage__temp {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  background-color: rgb(234, 231, 231);
+}
+.homepage__temp div {
+  -webkit-padding-before: 25%;
+          padding-block-start: 25%;
+  text-align: center;
+}
+.homepage__temp div p {
+  font-size: 2rem;
+  font-weight: 900;
+  color: rgb(141, 68, 68);
 }/*# sourceMappingURL=main.css.map */

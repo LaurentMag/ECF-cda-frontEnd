@@ -37,4 +37,4 @@ class DataServices {
   };
 }
 
-export const dataServes = Object.freeze(new DataServices());
+export const dataServices = Object.freeze(new DataServices());
