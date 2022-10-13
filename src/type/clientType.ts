@@ -1,1 +1,1 @@
-export type vehicleType = {};
+export type clientType = {};
