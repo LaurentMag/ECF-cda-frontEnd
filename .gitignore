@@ -21,3 +21,13 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# SASS
+.stylesheets/
+#main.css
+main.css.map
+
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
