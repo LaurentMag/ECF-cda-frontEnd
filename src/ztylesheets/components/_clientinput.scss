@@ -11,6 +11,7 @@
 
 .client__main-form-container {
   @include flex-modulable(null, null, null, 1rem);
+  flex-wrap: wrap;
 
   section {
     @include flex-modulable(column, null, null, 10px);

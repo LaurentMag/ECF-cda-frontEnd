@@ -1,5 +1,6 @@
 .Vehicle__unit-main-container {
   @include flex-modulable(null, space-between, center, 1rem);
+  flex-wrap: wrap;
 
   margin-block: 20px;
 

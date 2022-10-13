@@ -532,6 +532,7 @@ body {
 .client__main-form-container {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 .client__main-form-container section {
   display: flex;
@@ -570,6 +571,7 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
   margin-block: 20px;
   margin-block: 12px;
   padding-block: 15px;

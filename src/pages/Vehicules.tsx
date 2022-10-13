@@ -68,7 +68,7 @@ export const Vehicules = () => {
           /* TEXT */
           headerText="Nouveau Vehicule : "
           /* STYLE */
-          styleTopWrapper={"client__main-form-container-wrapper "}
+          styleTopWrapper={"client__main-form-container-wrapper"}
           styleFormContainer={"client__main-form-container"}
           styleInputAndLabel={"label-input"}
           /* CLIENT DATA */
