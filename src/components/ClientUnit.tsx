@@ -1,5 +1,6 @@
-import React, {useState} from "react";
-import {clientType} from "../type/clientType";
+import React, {useState, Fragment} from "react";
+import {clientType, clientTypeNoID} from "../type/clientType";
+import {ClientInput} from "./ClientInput";
 
 type propType = {
   id: number;
@@ -9,6 +10,7 @@ type propType = {
   email: string;
   telephone: number;
   dataDelete: Function;
+  dataToPatch: Function;
 };
 
 export const ClientUnit = (props: propType) => {
@@ -27,29 +29,54 @@ export const ClientUnit = (props: propType) => {
     props.dataDelete(props.id);
   };
 
+  const dataToUpdate = (data: clientTypeNoID) => {
+    props.dataToPatch(props.id, data);
+    setIsEdit((prev) => !prev);
+  };
+
   // ------------------------------------------------------------------
   // ------------------------------------------------------------------
   return (
     <section className="client-unit__container">
-      <div>
-        <p>
-          Nom: <span>{props.nom}</span>
-        </p>
-        <p>
-          Prenom: <span>{props.prenom}</span>
-        </p>
-      </div>
-      <div>
-        <p>
-          Naissance: <span>{props.dateDeNaissance}</span>
-        </p>
-        <p>
-          Email: <span>{props.email}</span>
-        </p>
-        <p>
-          Telephone: <span>{props.telephone}</span>
-        </p>
-      </div>
+      {isEdit ? (
+        <ClientInput
+          headerText="Edit Client : "
+          /* STYLE */
+          styleTopWrapper={""}
+          styleFormContainer={"client__main-form-edit"}
+          styleInputAndLabel={"label-input"}
+          /* CLIENT DATA */
+          nom={""}
+          prenom={""}
+          dateDeNaissance={""}
+          email={""}
+          telephone={0}
+          /* work on data */
+          addData={dataToUpdate}
+        />
+      ) : (
+        <Fragment>
+          <div>
+            <p>
+              Nom: <span>{props.nom}</span>
+            </p>
+            <p>
+              Prenom: <span>{props.prenom}</span>
+            </p>
+          </div>
+          <div>
+            <p>
+              Naissance: <span>{props.dateDeNaissance}</span>
+            </p>
+            <p>
+              Email: <span>{props.email}</span>
+            </p>
+            <p>
+              Telephone: <span>{props.telephone}</span>
+            </p>
+          </div>
+        </Fragment>
+      )}
 
       <section>
         <button

@@ -7,11 +7,11 @@ class DataServices {
   };
 
   postData = (url: string, data: clientType | vehicleType) => {
-    return fetch(url, {
+    return fetch(`${url}`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {"Content-Type": "application/json"},
-    }).then((res) => res.json());
+    });
   };
 
   putData = (url: string, id: number, data: clientType | vehicleType) => {

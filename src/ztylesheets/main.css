@@ -538,15 +538,21 @@ body {
   flex-direction: column;
   gap: 10px;
 }
-.client__main-form-container div {
+.client__main-form-container button {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.label-input {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
 }
-.client__main-form-container div label {
+.label-input label {
   white-space: nowrap;
 }
-.client__main-form-container div input {
+.label-input input {
   height: 20px;
   width: 55% px;
   border-radius: 10px;
@@ -555,13 +561,8 @@ body {
   font-weight: 800;
   padding-left: 10px;
 }
-.client__main-form-container div input:focus {
+.label-input input:focus {
   outline: 3px solid rgb(78, 78, 78);
-}
-.client__main-form-container button {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
 }
 
 .homepage__temp {

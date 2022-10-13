@@ -2,14 +2,19 @@ import React, {Fragment, useEffect, useState} from "react";
 import {clientTypeNoID} from "../type/clientType";
 
 type propsType = {
+  headerText: string;
+  //
   nom: string;
   prenom: string;
   dateDeNaissance: string;
   email: string;
   telephone: number;
   //
+  styleTopWrapper: string;
   styleFormContainer: string;
   styleInputAndLabel: string;
+  //
+  addData: Function;
 };
 
 export const ClientInput = (props: propsType) => {
@@ -23,10 +28,6 @@ export const ClientInput = (props: propsType) => {
     telephone: props.telephone,
   });
 
-  useEffect(() => {
-    console.log(inputState);
-  }, [inputState]);
-
   // ------------------------------------------------------------------
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target;
@@ -39,12 +40,21 @@ export const ClientInput = (props: propsType) => {
   };
 
   // ------------------------------------------------------------------
+  const handleSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    props.addData(inputState);
+  };
+
+  // ------------------------------------------------------------------
   // ------------------------------------------------------------------
   return (
     <Fragment>
-      <section className="client__main-form-container-wrapper">
-        <h2>Nouveau Client : </h2>
-        <form className={`${props.styleFormContainer}`}>
+      <section className={`${props.styleTopWrapper}`}>
+        <h2>{props.headerText}</h2>
+        <form
+          onSubmit={handleSubmit}
+          className={`${props.styleFormContainer}`}>
           <section>
             <div className={`${props.styleInputAndLabel}`}>
               <label htmlFor="nomID">Nom : </label>
