@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import {clientTypeNoID} from "../type/clientType";
 
 type propsType = {
@@ -23,6 +23,10 @@ export const ClientInput = (props: propsType) => {
     telephone: props.telephone,
   });
 
+  useEffect(() => {
+    console.log(inputState);
+  }, [inputState]);
+
   // ------------------------------------------------------------------
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target;
@@ -38,54 +42,61 @@ export const ClientInput = (props: propsType) => {
   // ------------------------------------------------------------------
   return (
     <Fragment>
-      <form>
-        <div>
-          <label htmlFor="nomID">Nom : </label>
-          <input
-            onChange={handleInputChange}
-            id="nomID"
-            type="text"
-            name="nom"></input>
-        </div>
+      <section className="client__main-form-container-wrapper">
+        <h2>Nouveau Client : </h2>
+        <form className={`${props.styleFormContainer}`}>
+          <section>
+            <div className={`${props.styleInputAndLabel}`}>
+              <label htmlFor="nomID">Nom : </label>
+              <input
+                onChange={handleInputChange}
+                id="nomID"
+                type="text"
+                name="nom"></input>
+            </div>
 
-        <div>
-          <label htmlFor="prenomID">Prenom : </label>
-          <input
-            onChange={handleInputChange}
-            id="prenomID"
-            type="text"
-            name="prenom"></input>
-        </div>
+            <div className={`${props.styleInputAndLabel}`}>
+              <label htmlFor="prenomID">Prenom : </label>
+              <input
+                onChange={handleInputChange}
+                id="prenomID"
+                type="text"
+                name="prenom"></input>
+            </div>
+          </section>
 
-        <div>
-          <label htmlFor="naissanceID"> Naissance : </label>
-          <input
-            onChange={handleInputChange}
-            id="naissanceID"
-            type="date"
-            name="dateDeNaissance"></input>
-        </div>
+          <section>
+            <div className={`${props.styleInputAndLabel}`}>
+              <label htmlFor="naissanceID"> Naissance : </label>
+              <input
+                onChange={handleInputChange}
+                id="naissanceID"
+                type="date"
+                name="dateDeNaissance"></input>
+            </div>
 
-        <div>
-          <label htmlFor="emailID"> Email </label>
-          <input
-            onChange={handleInputChange}
-            id="emailID"
-            type="email"
-            name="email"></input>
-        </div>
+            <div className={`${props.styleInputAndLabel}`}>
+              <label htmlFor="emailID"> Email : </label>
+              <input
+                onChange={handleInputChange}
+                id="emailID"
+                type="email"
+                name="email"></input>
+            </div>
 
-        <div>
-          <label htmlFor="telID"> Téléphone : </label>
-          <input
-            onChange={handleInputChange}
-            id="telID"
-            type="number"
-            name="telephone"></input>
-        </div>
+            <div className={`${props.styleInputAndLabel}`}>
+              <label htmlFor="telID"> Téléphone : </label>
+              <input
+                onChange={handleInputChange}
+                id="telID"
+                type="text"
+                name="telephone"></input>
+            </div>
+          </section>
 
-        <button>Valider</button>
-      </form>
+          <button className="general-button">Valider</button>
+        </form>
+      </section>
     </Fragment>
   );
 };

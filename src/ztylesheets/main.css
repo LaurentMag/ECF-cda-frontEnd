@@ -491,7 +491,7 @@ body {
   padding-inline: 5%;
   background-color: rgb(187, 187, 187);
   border-radius: 10px;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.465);
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.465);
   width: min(95%, 50rem);
 }
 .client-unit__container div {
@@ -515,6 +515,53 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   gap: 0;
+}
+
+.client__main-form-container-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 10px;
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.465);
+  background-color: rgb(217, 217, 217);
+  padding-block: 15px;
+  padding-inline: 30px;
+  margin-block: 25px;
+}
+
+.client__main-form-container {
+  display: flex;
+  gap: 1rem;
+}
+.client__main-form-container section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.client__main-form-container div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.client__main-form-container div label {
+  white-space: nowrap;
+}
+.client__main-form-container div input {
+  height: 20px;
+  width: 55% px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 800;
+  padding-left: 10px;
+}
+.client__main-form-container div input:focus {
+  outline: 3px solid rgb(78, 78, 78);
+}
+.client__main-form-container button {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .homepage__temp {

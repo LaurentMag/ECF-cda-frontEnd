@@ -50,7 +50,7 @@ export const Clients = () => {
       <section className="client__display-container">
         <ClientInput
           /* STYLE */
-          styleFormContainer={""}
+          styleFormContainer={"client__main-form-container"}
           styleInputAndLabel={""}
           /* CLIENT DATA */
           nom={""}
