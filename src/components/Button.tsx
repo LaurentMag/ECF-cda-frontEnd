@@ -16,7 +16,6 @@ export const Button = (props: propsType) => {
     // leave prevent default to keep the "submit effect in form"
     //e.preventDefault();
     props.handleClick(e);
-    console.log(props.disabled);
   };
 
   return (

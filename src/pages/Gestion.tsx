@@ -1,11 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import {vehicleType} from "../type/vehicleType";
 import {dataServices} from "../services/dataServices";
+import {locationType} from "../type/locationType";
+import {LocationResumeUnit} from "../components/LocationResumeUnit";
 
-const URLvoiture: string = "http://localhost:3000/voitures";
+const URLlocation: string = "http://localhost:3000/location";
 
 export const Gestion = () => {
-  const [vehiculeList, setVehiculeList] = useState<vehicleType[]>();
+  const [locationList, setLocationList] = useState<locationType[]>();
   /**
    * useEffect used to trigger a data fetch, only the first component is created.
    */
@@ -17,10 +19,17 @@ export const Gestion = () => {
    * Fetch data using dataservices method, then set data in the react state
    */
   const dataFetch = () => {
-    dataServices.fetchData(URLvoiture).then((data) => setVehiculeList(data));
+    dataServices.fetchData(URLlocation).then((data) => setLocationList(data));
   };
 
   // ----------------------------------------------------------------------------
   // ----------------------------------------------------------------------------
-  return <section></section>;
+  return (
+    <section className="gestion__main-container">
+      {locationList &&
+        locationList.map((element) => {
+          return <LocationResumeUnit locationObject={element} />;
+        })}
+    </section>
+  );
 };

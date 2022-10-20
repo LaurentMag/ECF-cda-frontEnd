@@ -1,0 +1,37 @@
+.gestionlocation__container {
+  padding: 1rem;
+  width: min(70rem, 95%);
+
+  background-color: $color_background-cards;
+
+  display: flex;
+}
+
+.gestionlocation_voiture {
+  display: flex;
+  gap: 1rem;
+  background-color: rgb(168, 168, 168);
+  border-radius: $border-radius-element-default;
+
+  padding: 1rem;
+
+  figure {
+    width: 15rem;
+  }
+
+  section {
+    @include flex-modulable(column, center, center, 1rem);
+  }
+}
+
+.gestionlocation_date {
+  @include flex-modulable(column, center, center, 1rem);
+  padding: 1rem;
+}
+
+.gestionlocation_client {
+  @include flex-modulable(column, center, null, 1rem);
+  padding: 1rem;
+  background-color: rgb(168, 168, 168);
+  border-radius: $border-radius-element-default;
+}

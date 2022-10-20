@@ -4,7 +4,7 @@ export type clientType = {
   prenom: string;
   dateDeNaissance: string;
   email: string;
-  telephone: number;
+  telephone: string;
 };
 
 export type clientTypeNoID = {
@@ -12,5 +12,5 @@ export type clientTypeNoID = {
   prenom: string;
   dateDeNaissance: string;
   email: string;
-  telephone: number;
+  telephone: string;
 };

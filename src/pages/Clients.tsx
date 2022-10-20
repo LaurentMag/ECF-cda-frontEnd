@@ -74,7 +74,7 @@ export const Clients = () => {
           prenom={""}
           dateDeNaissance={""}
           email={""}
-          telephone={0}
+          telephone={""}
           /* work on data */
           addData={dataAdd}
         />

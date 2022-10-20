@@ -16,7 +16,7 @@ export const VehicleUnitHome = (props: propsType) => {
     setIsModalVisible((prev) => !prev);
   };
 
-  const handleModal = () => {};
+  const handleRentalCreation = () => {};
 
   return (
     <section
@@ -25,6 +25,7 @@ export const VehicleUnitHome = (props: propsType) => {
       {isModalVisible && (
         <Modal
           isModalOpen={isModalVisible}
+          vehicle={props.vehicle}
           handleModalState={showModal}
         />
       )}

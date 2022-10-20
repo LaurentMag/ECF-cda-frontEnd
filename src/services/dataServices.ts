@@ -1,3 +1,4 @@
+import {locationType} from "./../type/locationType";
 import {clientType} from "../type/clientType";
 import {vehicleType} from "../type/vehicleType";
 
@@ -17,7 +18,7 @@ class DataServices {
    * @param data data of ClientType or VehicleType depending of which function use this service
    * @returns fetch POST
    */
-  postData = (url: string, data: clientType | vehicleType) => {
+  postData = (url: string, data: clientType | vehicleType | locationType) => {
     return fetch(`${url}`, {
       method: "POST",
       body: JSON.stringify(data),
@@ -32,7 +33,7 @@ class DataServices {
    * @param data data to be used to udpated the selected object
    * @returns  fetch PUT
    */
-  putData = (url: string, id: number, data: clientType | vehicleType) => {
+  putData = (url: string, id: number, data: clientType | vehicleType | locationType) => {
     return fetch(`${url}/${id}`, {
       method: "PUT",
       body: JSON.stringify(data),

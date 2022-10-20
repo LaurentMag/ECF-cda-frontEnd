@@ -8,7 +8,7 @@ type propType = {
   prenom: string;
   dateDeNaissance: string;
   email: string;
-  telephone: number;
+  telephone: string;
   dataDelete: Function;
   dataToPatch: Function;
 };

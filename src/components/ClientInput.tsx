@@ -8,7 +8,7 @@ type propsType = {
   prenom: string;
   dateDeNaissance: string;
   email: string;
-  telephone: number;
+  telephone: string;
   //
   styleTopWrapper: string;
   styleFormContainer: string;
