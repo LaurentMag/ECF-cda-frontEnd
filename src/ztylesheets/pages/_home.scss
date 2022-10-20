@@ -1,5 +1,3 @@
-.homepage__temp {
-  height: 100vh;
-
+.home__container {
   @include flex-modulable(column, null, center);
 }

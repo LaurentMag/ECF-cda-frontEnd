@@ -592,8 +592,7 @@ body {
   border-radius: 10px;
 }
 
-.homepage__temp {
-  height: 100vh;
+.home__container {
   display: flex;
   flex-direction: column;
   align-items: center;

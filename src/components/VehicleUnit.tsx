@@ -2,6 +2,8 @@ import React, {Fragment, useState} from "react";
 import {vehicleTypeNoID} from "../type/vehicleType";
 import {VehiculeInput} from "./VehiculeInput";
 
+import VehiclePic from "./../assets/voiture.jpg";
+
 type propsType = {
   id: number;
   marque: string;
@@ -50,7 +52,7 @@ export const VehicleUnit = (props: propsType) => {
       <figure>
         <img
           className="general_image"
-          src={require("../assets/voiture.jpg")}
+          src={VehiclePic}
           alt=""
         />
       </figure>

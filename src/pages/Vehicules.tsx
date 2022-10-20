@@ -5,11 +5,13 @@ import {dataServices} from "../services/dataServices";
 import {VehicleUnit} from "../components/VehicleUnit";
 import {VehiculeInput} from "../components/VehiculeInput";
 import {FilterInput} from "../components/FilterInput";
+import {filterType} from "../type/filterType";
 
 const URLvoiture: string = "http://localhost:3000/voitures";
 
 export const Vehicules = () => {
   const [vehiculeList, setVehiculeList] = useState<vehicleType[]>();
+  const [filter, setFilter] = useState<filterType>();
   /**
    * useEffect used to trigger a data fetch, only the first component is created.
    */
@@ -60,6 +62,10 @@ export const Vehicules = () => {
   };
 
   // ----------------------------------------------------------------------------
+  // filter management :
+  const receiveFilterData = () => {};
+
+  // ----------------------------------------------------------------------------
   // ----------------------------------------------------------------------------
   return (
     <Fragment>
@@ -82,7 +88,11 @@ export const Vehicules = () => {
           addData={dataAdd}
         />
 
-        <FilterInput />
+        <FilterInput
+          filterOn={["marque", "model", "immatriculation", "etat", "type", "disponible"]}
+          getFilter={receiveFilterData}
+        />
+
         {vehiculeList &&
           vehiculeList.map((vehicule) => {
             return (

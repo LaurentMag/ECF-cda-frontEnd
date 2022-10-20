@@ -4,47 +4,58 @@
       "id": 0,
       "nom": "Robert",
       "prenom": "Toutpres",
-      "dateDeNaissance": "1950/09/24",
+      "dateDeNaissance": "1950-09-24",
       "email": "robertToutpres@gmail.com",
-      "telephone": "O6O1O1O1O1"
+      "telephone": "0601010101"
     },
     {
       "id": 1,
       "nom": "Josephine",
       "prenom": "Dorian",
-      "dateDeNaissance": "1990/02/03",
+      "dateDeNaissance": "1990-02-03",
       "email": "josephineDo@gmail.com",
-      "telephone": "O6O2O2O2O2"
+      "telephone": "0602020202"
     },
     {
       "id": 2,
       "nom": "Dylon",
       "prenom": "Tehbot",
-      "dateDeNaissance": "1980/10/03",
+      "dateDeNaissance": "1980-10-03",
       "email": "dylonTeh@gmail.com",
-      "telephone": "O6O3O3O3O3"
+      "telephone": "0603030303"
     },
     {
       "id": 3,
       "nom": "Brittany",
       "prenom": "Woodpile",
-      "dateDeNaissance": "1968/02/18",
+      "dateDeNaissance": "1968-02-18",
       "email": "brittWood@gmail.com",
-      "telephone": "O6O4O4O4O4"
+      "telephone": "0604040404"
     },
     {
       "id": 4,
       "nom": "Brenda",
       "prenom": "TreeBurns",
-      "dateDeNaissance": "1970/12/25",
+      "dateDeNaissance": "1970-12-25",
       "email": "brendaTree@gmail.com",
-      "telephone": "O6O5O5O5O5"
+      "telephone": "0605050505"
     }
   ],
   "voitures": [
     {
       "id": 0,
+      "marque": "Renault",
+      "model": "Sinic",
+      "immatriculation": "AA-001-AA",
+      "etat": "A",
+      "prixJournee": 400,
+      "disponible": false,
+      "type": "voiture"
+    },
+    {
+      "id": 1,
       "marque": "Peugeot",
+      "model": "666",
       "immatriculation": "PE-101-GO",
       "etat": "B",
       "prixJournee": 100,
@@ -52,8 +63,9 @@
       "type": "voiture"
     },
     {
-      "id": 0,
+      "id": 2,
       "marque": "Aston Martin",
+      "model": "006",
       "immatriculation": "OO-007-OO",
       "etat": "S",
       "prixJournee": 8000,
@@ -61,8 +73,9 @@
       "type": "voiture"
     },
     {
-      "id": 0,
+      "id": 3,
       "marque": "Fraudari",
+      "model": "Wallet-GT",
       "immatriculation": "XX-041-ZZ",
       "etat": "F",
       "prixJournee": 10150,
@@ -70,8 +83,9 @@
       "type": "voiture"
     },
     {
-      "id": 0,
+      "id": 4,
       "marque": "Lada",
+      "model": "Ruined",
       "immatriculation": "RU-901-UR",
       "etat": "E",
       "prixJournee": 20,

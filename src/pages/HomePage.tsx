@@ -22,12 +22,5 @@ export const HomePage = () => {
 
   // ----------------------------------------------------------------------------
   // ----------------------------------------------------------------------------
-  return (
-    <section className="homepage__temp">
-      <div>
-        <p> UnderConstruction </p>
-        <p> Comeback later </p>
-      </div>
-    </section>
-  );
+  return <section className="home__container">{vehiculeList && <section> </section>}</section>;
 };
