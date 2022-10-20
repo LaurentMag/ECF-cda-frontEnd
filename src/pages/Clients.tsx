@@ -6,11 +6,14 @@ import {dataServices} from "../services/dataServices";
 import {clientType, clientTypeNoID} from "../type/clientType";
 //
 import {randomNumber} from "../services/tools";
+import {FilterInput} from "../components/FilterInput";
+import {filterType} from "../type/filterType";
 
 const URLclient: string = "http://localhost:3000/clients";
 
 export const Clients = () => {
   const [clientList, setClientList] = useState<clientType[]>();
+  const [filter, setFilter] = useState<filterType>();
   /**
    * useEffect used to trigger a data fetch, only the first component is created.
    */
@@ -57,6 +60,41 @@ export const Clients = () => {
     dataServices.deleteData(URLclient, id).then(() => dataFetch());
   };
 
+  // ----------------------------------------------------------------------------
+  //FILTER
+
+  /**
+   *  Receive filter from filterinput component.
+   * Use thoses parameter to only display the filtered data
+   * @param filter data send from filter component
+   */
+  const receiveFilterData = (filter: filterType) => {
+    setFilter(filter);
+  };
+
+  /**
+   * Return a array containing only filtered data, or the initial list if no filter was setup
+   * @returns filtered array according to filter selection
+   */
+  const handlefilter = (): clientType[] => {
+    let filteredDataArr: clientType[] = [];
+
+    if (clientList) {
+      if (!filter || filter.searchfor === "") {
+        filteredDataArr = clientList;
+      } else {
+        filteredDataArr = clientList.filter((client) => {
+          const attrValue: string | number = client[filter.filter as keyof clientType];
+
+          if (typeof attrValue === "string") {
+            return attrValue.toLowerCase().includes(filter.searchfor.toLowerCase());
+          }
+        });
+      }
+    }
+    return filteredDataArr;
+  };
+
   // ------------------------------------------------------------------
   // ------------------------------------------------------------------
   return (
@@ -78,12 +116,17 @@ export const Clients = () => {
           /* work on data */
           addData={dataAdd}
         />
+
+        <FilterInput
+          filterOn={["nom", "prenom", "dateDeNaissance", "email", "telephone"]}
+          getFilter={receiveFilterData}
+        />
         {/* 
           check first if clientList isnt null / empty. if not trigger display ( && )
           prevent potential error if async fetch isnt done when comp is created
         */}
         {clientList &&
-          clientList.map((client) => {
+          handlefilter().map((client) => {
             return (
               <ClientUnit
                 key={client.id}

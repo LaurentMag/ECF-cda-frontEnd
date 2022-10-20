@@ -62,8 +62,41 @@ export const Vehicules = () => {
   };
 
   // ----------------------------------------------------------------------------
-  // filter management :
-  const receiveFilterData = () => {};
+  //FILTER
+
+  /**
+   *  Receive filter from filterinput component.
+   * Use thoses parameter to only display the filtered data
+   * @param filter data send from filter component
+   */
+  const receiveFilterData = (filter: filterType) => {
+    setFilter(filter);
+  };
+
+  /**
+   * Return a array containing only filtered data, or the initial list if no filter was setup
+   * @returns filtered array according to filter selection
+   */
+  const handlefilter = (): vehicleType[] => {
+    let filteredDataArr: vehicleType[] = [];
+
+    if (vehiculeList) {
+      if (!filter || filter.searchfor == "") {
+        filteredDataArr = vehiculeList;
+      } else {
+        filteredDataArr = vehiculeList.filter((vehicle) => {
+          const attrValue: string | number | boolean = vehicle[filter.filter as keyof vehicleType];
+          if (typeof attrValue === "string") {
+            return attrValue.toLowerCase().includes(filter.searchfor.toLowerCase());
+          } else if (typeof attrValue === "boolean") {
+            const checkIn: boolean = ["disponible"].includes(filter.searchfor.toLocaleLowerCase());
+            return attrValue === checkIn;
+          }
+        });
+      }
+    }
+    return filteredDataArr;
+  };
 
   // ----------------------------------------------------------------------------
   // ----------------------------------------------------------------------------
@@ -98,7 +131,7 @@ export const Vehicules = () => {
         />
 
         {vehiculeList &&
-          vehiculeList.map((vehicule) => {
+          handlefilter().map((vehicule) => {
             return (
               <VehicleUnit
                 key={vehicule.id}
