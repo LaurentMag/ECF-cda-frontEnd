@@ -27,7 +27,12 @@ export const HomePage = () => {
     <section className="home__container">
       {vehiculeList &&
         vehiculeList.map((vehicle) => {
-          return <VehicleUnitHome vehicle={vehicle} />;
+          return (
+            <VehicleUnitHome
+              key={vehicle.id}
+              vehicle={vehicle}
+            />
+          );
         })}
     </section>
   );

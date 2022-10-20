@@ -116,7 +116,9 @@ export const Modal = (props: propsType) => {
                   {clientList &&
                     clientList.map((client) => {
                       return (
-                        <option value={client.id}>
+                        <option
+                          key={client.id}
+                          value={client.id}>
                           {client.nom} {client.prenom}
                         </option>
                       );
