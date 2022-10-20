@@ -6,6 +6,7 @@ import {Navbar} from "./Layout/Navbar";
 import {HomePage} from "./pages/HomePage";
 import {Clients} from "./pages/Clients";
 import {Vehicules} from "./pages/Vehicules";
+import {Gestion} from "./pages/Gestion";
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
           <Route
             path="/"
             element={<HomePage />}
+          />
+          <Route
+            path="/gestion"
+            element={<Gestion />}
           />
           <Route
             path="/vehicules"

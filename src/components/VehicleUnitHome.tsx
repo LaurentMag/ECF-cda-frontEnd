@@ -19,7 +19,10 @@ export const VehicleUnitHome = (props: propsType) => {
   const handleModal = () => {};
 
   return (
-    <section className="vehicle-unit-home__container">
+    <section
+      className={`vehicle-unit-home__container ${
+        props.vehicle.disponible ? "vehicle-default-bg" : "vehicle_rented-bg"
+      }`}>
       <Modal
         isModalOpen={isModalVisible}
         handleModalState={showModal}
@@ -57,7 +60,8 @@ export const VehicleUnitHome = (props: propsType) => {
 
         <Button
           content={"Louer"}
-          extraCssClass={""}
+          extraCssClass={!props.vehicle.disponible ? "button_disabled" : ""}
+          disabled={!props.vehicle.disponible}
           handleClick={showModal}
         />
       </section>

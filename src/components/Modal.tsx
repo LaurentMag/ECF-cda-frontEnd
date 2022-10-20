@@ -55,6 +55,12 @@ export const Modal = (props: propsType) => {
       };
     });
   };
+  // --------------------------------------------------------------------
+  // RENTAL VALIDATION:
+  const handledRental = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
 
   // --------------------------------------------------------------------
   // MODAL HANDLING
@@ -131,11 +137,13 @@ export const Modal = (props: propsType) => {
               <Button
                 content={"valider"}
                 extraCssClass={""}
-                handleClick={() => {}}
+                disabled={false}
+                handleClick={handledRental}
               />
               <Button
                 content={"Close"}
                 extraCssClass={""}
+                disabled={false}
                 handleClick={handleModalState}
               />
             </div>

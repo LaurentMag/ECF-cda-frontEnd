@@ -70,6 +70,7 @@ export const FilterInput = (props: propsType) => {
         <Button
           content={"valider"}
           extraCssClass={""}
+          disabled={false}
           handleClick={() => {}}
         />
       </div>

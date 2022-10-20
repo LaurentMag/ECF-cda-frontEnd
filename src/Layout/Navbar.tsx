@@ -25,7 +25,7 @@ export const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to="/gestion"
+            to="gestion"
             className="text-link">
             Gestion Locations
           </NavLink>
