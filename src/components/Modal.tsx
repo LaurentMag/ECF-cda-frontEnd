@@ -14,7 +14,6 @@ type propsType = {
 };
 
 const URLclient: string = "http://localhost:3000/clients";
-const URLvoiture: string = "http://localhost:3000/voitures";
 const URLlocation: string = "http://localhost:3000/location";
 
 export const Modal = (props: propsType) => {
@@ -24,7 +23,7 @@ export const Modal = (props: propsType) => {
     id: 0,
     dateDebut: "",
     dateFin: "",
-    prix: 0,
+    prix: props.vehicle.prixJournee,
     client: {
       id: 0,
       nom: "",
@@ -59,10 +58,8 @@ export const Modal = (props: propsType) => {
   const [modalInput, setModalInput] = useState({
     date1: `${new Date().toLocaleDateString().split("/").reverse().join("-")}`,
     date2: `${changeDate()}`,
-    prix: 0,
     clientID: 0,
   });
-
   // --------------------------------------------------------------------
   /**
    * useEffect used to trigger a data fetch, only the first component is created.
@@ -88,7 +85,7 @@ export const Modal = (props: propsType) => {
   // --------------------------------------------------------------------
   // MODAL STATE HANDLING
   /**
-   *  send the mouse event to parent page
+   *  send the mouse event to parent page to close the modal
    * @param e mouse click event
    */
   const handleModalState = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -104,13 +101,7 @@ export const Modal = (props: propsType) => {
   };
 
   // --------------------------------------------------------------------
-  // DATE HANDLING
-
-  useEffect(() => {
-    console.log(modalInput);
-  }, [modalInput]);
-
-  //
+  // DATE / CLIENT ID HANDLING
 
   /**
    * gather input value and set them into modal state object
@@ -125,10 +116,9 @@ export const Modal = (props: propsType) => {
         [name]: name === "selected" ? Number(value) : value,
       };
     });
-
-    handleLocationObjectCreation();
   };
 
+  // --------------------------------------------------------------------
   // --------------------------------------------------------------------
   // RENTAL VALIDATION:
 
@@ -152,23 +142,26 @@ export const Modal = (props: propsType) => {
     } else {
       console.log("les dates ne sont pas correct ");
     }
+
     return price;
   };
 
+  // ---------------------------
   /**
-   * generate location object based on
-   * if the date selection so pricing is correct
+   * generate a new location object based on modalInput state values
+   * to retrive dates, selected client and vehicle
    */
-  const handleLocationObjectCreation = () => {
+  const handleLocationObjectCreation = (priceParam: number) => {
     if (clientList) {
-      const client = clientList.filter((client) => {
+      const client: clientType[] = clientList.filter((client) => {
         return client.id == modalInput.clientID;
       });
+
       setLocationObj((prev) => {
         return {
           ...prev,
           id: randomNumber(),
-          prix: rentalPriceCalculation() === 0 ? 0 : rentalPriceCalculation(),
+          prix: priceParam,
           dateDebut: modalInput.date1,
           dateFin: modalInput.date2,
           client: {...client[0]},
@@ -178,23 +171,32 @@ export const Modal = (props: propsType) => {
     }
   };
 
+  // ---------------------------
+  // update locationObj once the modalInput state has change to retrice the correct information
+  // so the correct pricing  calculation based on selected dates
+  useEffect(() => {
+    handleLocationObjectCreation(rentalPriceCalculation());
+  }, [modalInput]);
+
+  // ---------------------------
   /**
    * create the location object in the "data base / json server"
    * @param e button mouse click event
    */
-  const handledRental = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleModalvalidateButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
 
-    if (locationObj.prix === 0 || locationObj.prix < 0) {
-      console.log("Erreur sur les dates, veuillez recommencer");
-    } else {
+    // check if the price is valid ( if not > 0 mean selected date arent correct )
+    if (rentalPriceCalculation() > 0) {
       dataAddLocation(locationObj);
 
       // patch rented vehicle to change aviability status
       props.dataPatchVehicle(props.vehicle.id, {disponible: !props.vehicle.disponible});
 
       props.handleModalState(e);
+    } else {
+      console.log("Erreur sur les dates, veuillez recommencer");
     }
   };
 
@@ -265,7 +267,7 @@ export const Modal = (props: propsType) => {
                 content={"valider"}
                 extraCssClass={""}
                 disabled={false}
-                handleClick={handledRental}
+                handleClick={handleModalvalidateButton}
               />
               <Button
                 content={"Close"}

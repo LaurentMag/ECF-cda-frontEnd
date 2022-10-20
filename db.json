@@ -49,7 +49,7 @@
       "immatriculation": "AA-001-AA",
       "etat": "A",
       "prixJournee": 400,
-      "disponible": false,
+      "disponible": true,
       "type": "voiture"
     },
     {
@@ -60,7 +60,7 @@
       "immatriculation": "PE-101-GO",
       "etat": "B",
       "prixJournee": 100,
-      "disponible": false,
+      "disponible": true,
       "type": "voiture"
     },
     {
