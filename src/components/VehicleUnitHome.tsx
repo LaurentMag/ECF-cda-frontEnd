@@ -1,15 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 import {vehicleType} from "../type/vehicleType";
 
 import VehiclePic from "./../assets/voiture.jpg";
+import {Button} from "./Button";
+import {Modal} from "./Modal";
 
 type propsType = {
   vehicle: vehicleType;
 };
 
 export const VehicleUnitHome = (props: propsType) => {
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+
+  const showModal = () => {
+    setIsModalVisible((prev) => !prev);
+  };
+
+  const handleModal = () => {};
+
   return (
     <section className="vehicle-unit-home__container">
+      <Modal
+        isModalOpen={isModalVisible}
+        handleModalState={showModal}
+      />
       <figure>
         <img
           className="general_image"
@@ -26,6 +40,28 @@ export const VehicleUnitHome = (props: propsType) => {
               Marque : <span className="general_span-info-stack">{props.vehicle.marque}</span>
             </p>
           </div>
+
+          <div>
+            <p className="general_p-info-stack">
+              Prix : <span className="general_span-info-stack">{props.vehicle.prixJournee}</span>
+            </p>
+            <p className="general_p-info-stack">
+              Etat : <span className="general_span-info-stack">{props.vehicle.etat}</span>
+            </p>
+          </div>
+
+          <div className={`${props.vehicle.disponible ? "vehicle_aviable" : "vehicle_rented"}`}>
+            <p className="general_p-info-stack">
+              Disponibilité :{"   "}
+              <span className="general_span-info-stack">{props.vehicle.disponible ? "Disponible" : "Loué"}</span>
+            </p>
+          </div>
+
+          <Button
+            content={"Louer"}
+            extraCssClass={""}
+            handleClick={showModal}
+          />
         </section>
       </figure>
     </section>

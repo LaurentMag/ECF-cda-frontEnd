@@ -508,7 +508,8 @@ body {
   border: none;
   padding: 0.6rem;
   border-radius: 5px;
-  background-color: rgb(237, 237, 237);
+  background-color: rgb(84, 84, 84);
+  color: rgb(227, 227, 227);
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.373);
 }
 .general-button:hover {
@@ -626,6 +627,29 @@ body {
 }
 .Vehicle__unit-main-container figure img {
   border-radius: 10px;
+}
+
+.modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal__content {
+  width: min(35rem, 90%);
+  height: 40rem;
+  background-color: rgb(231, 231, 231);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal__content button {
+  width: min(10rem, 90%);
 }
 
 .home__container {

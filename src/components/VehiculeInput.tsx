@@ -42,6 +42,21 @@ export const VehiculeInput = (props: propsType) => {
     });
   };
 
+  /**
+   * get select input target value to pass it to corresponding attribute.
+   * Second method is needed as multiple ts event typing do not work with the checked
+   * @param e react event for select input
+   */
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const {name, value} = e.target;
+    setInputState((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  };
+
   // ------------------------------------------------------------------
   /**
    *    once the form is submit, it send the state content to the
@@ -73,6 +88,27 @@ export const VehiculeInput = (props: propsType) => {
                 name="marque"
                 value={inputState.marque}></input>
             </div>
+            <div className={`${props.styleInputAndLabel}`}>
+              <label htmlFor="modelID">Model : </label>
+              <input
+                onChange={handleInputChange}
+                id="modelID"
+                type="text"
+                name="model"
+                value={inputState.model}></input>
+            </div>
+          </section>
+
+          <section>
+            <div className={`${props.styleInputAndLabel}`}>
+              <label htmlFor="typeID"> Type : </label>
+              <input
+                onChange={handleInputChange}
+                id="typeID"
+                type="text"
+                name="type"
+                value={inputState.type}></input>
+            </div>
 
             <div className={`${props.styleInputAndLabel}`}>
               <label htmlFor="immatriculationID">Immatriculation : </label>
@@ -87,13 +123,22 @@ export const VehiculeInput = (props: propsType) => {
 
           <section>
             <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="etatID"> etat : </label>
-              <input
-                onChange={handleInputChange}
+              <label htmlFor="etatID"> Etat : </label>
+              {/*  */}
+              <select
+                className="input-select"
                 id="etatID"
-                type="text"
-                name="dateDeetat"
-                value={inputState.etat}></input>
+                name="etat"
+                value={inputState.etat}
+                onChange={handleSelectChange}>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+              </select>
+              {/*  */}
             </div>
 
             <div className={`${props.styleInputAndLabel}`}>
@@ -107,7 +152,7 @@ export const VehiculeInput = (props: propsType) => {
             </div>
           </section>
 
-          <section>
+          {!props.headerText && (
             <div className={``}>
               <label htmlFor="disponibleID"> Disponibilité : </label>
               <input
@@ -117,17 +162,7 @@ export const VehiculeInput = (props: propsType) => {
                 name="disponible"
                 checked={inputState.disponible}></input>
             </div>
-
-            <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="typeID"> Type : </label>
-              <input
-                onChange={handleInputChange}
-                id="typeID"
-                type="text"
-                name="type"
-                value={inputState.type}></input>
-            </div>
-          </section>
+          )}
 
           <button className="general-button">Valider</button>
         </form>

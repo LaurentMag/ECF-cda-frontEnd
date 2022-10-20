@@ -54,7 +54,7 @@ export const VehicleUnit = (props: propsType) => {
       {isEdit ? (
         <VehiculeInput
           /* TEXT */
-          headerText="Nouveau Vehicule : "
+          headerText=""
           /* STYLE */
           styleTopWrapper={""}
           styleFormContainer={""}
@@ -66,12 +66,36 @@ export const VehicleUnit = (props: propsType) => {
         />
       ) : (
         <section>
-          <p>Marque : {props.vehicle.marque}</p>
-          <p>Immatriculation : {props.vehicle.immatriculation}</p>
-          <p>Etat : {props.vehicle.etat}</p>
-          <p>Prix : {props.vehicle.prixJournee}</p>
-          <p>Disponibilité : {props.vehicle.disponible ? "disponible" : "Loué"}</p>
-          <p>Type : {props.vehicle.type}</p>
+          <div>
+            <p className="general_p-info-stack">
+              Model : <span className="general_span-info-stack">{props.vehicle.model}</span>
+            </p>
+            <p className="general_p-info-stack">
+              Marque : <span className="general_span-info-stack">{props.vehicle.marque}</span>
+            </p>
+          </div>
+
+          <div>
+            <p className="general_p-info-stack">
+              Prix : <span className="general_span-info-stack">{props.vehicle.prixJournee}</span>
+            </p>
+            <p className="general_p-info-stack">
+              Plaque : <span className="general_span-info-stack">{props.vehicle.immatriculation}</span>
+            </p>
+            <p className="general_p-info-stack">
+              Type : <span className="general_span-info-stack">{props.vehicle.type}</span>
+            </p>
+            <p className="general_p-info-stack">
+              Etat : <span className="general_span-info-stack">{props.vehicle.etat}</span>
+            </p>
+          </div>
+
+          <div className={`${props.vehicle.disponible ? "vehicle_aviable" : "vehicle_rented"}`}>
+            <p className="general_p-info-stack">
+              Disponibilité :{"   "}
+              <span className="general_span-info-stack">{props.vehicle.disponible ? "Disponible" : "Loué"}</span>
+            </p>
+          </div>
         </section>
       )}
 
