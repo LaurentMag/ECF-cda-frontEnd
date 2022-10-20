@@ -28,7 +28,12 @@ export const Gestion = () => {
     <section className="gestion__main-container">
       {locationList &&
         locationList.map((element) => {
-          return <LocationResumeUnit locationObject={element} />;
+          return (
+            <LocationResumeUnit
+              key={element.id}
+              locationObject={element}
+            />
+          );
         })}
     </section>
   );

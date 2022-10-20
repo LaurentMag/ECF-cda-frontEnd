@@ -116,6 +116,54 @@
         "disponible": false,
         "type": "voiture"
       }
+    },
+    {
+      "id": 1194236303683,
+      "dateDebut": "2022-10-20",
+      "dateFin": "2022-10-29",
+      "prix": 900,
+      "client": {
+        "id": 0,
+        "nom": "Robert",
+        "prenom": "Toutpres",
+        "dateDeNaissance": "1950-09-24",
+        "email": "robertToutpres@gmail.com",
+        "telephone": "0601010101"
+      },
+      "voiture": {
+        "id": 1,
+        "marque": "Peugeot",
+        "model": "666",
+        "immatriculation": "PE-101-GO",
+        "etat": "B",
+        "prixJournee": 100,
+        "disponible": true,
+        "type": "voiture"
+      }
+    },
+    {
+      "id": 38040237184359,
+      "dateDebut": "2022-10-20",
+      "dateFin": "2022-10-29",
+      "prix": 91350,
+      "client": {
+        "id": 0,
+        "nom": "Robert",
+        "prenom": "Toutpres",
+        "dateDeNaissance": "1950-09-24",
+        "email": "robertToutpres@gmail.com",
+        "telephone": "0601010101"
+      },
+      "voiture": {
+        "id": 3,
+        "marque": "Fraudari",
+        "model": "Wallet-GT",
+        "immatriculation": "XX-041-ZZ",
+        "etat": "F",
+        "prixJournee": 10150,
+        "disponible": true,
+        "type": "voiture"
+      }
     }
   ]
 }

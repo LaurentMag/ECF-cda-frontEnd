@@ -14,7 +14,8 @@
 
 // 5. Components
 @import "components/button", "components/clientunit", "components/clientinput", "components/vehiculeUnit",
-  "components/vehicleUnitHome", "components/modal", "components/filter", "components/locationresumeunit";
+  "components/vehicleUnitHome", "components/modal", "components/filter", "components/locationresumeunit",
+  "components/input";
 
 // 6. Page-specific styles
 @import "pages/home", "pages/clientspage", "pages/vehiclepage", "pages/gestion";

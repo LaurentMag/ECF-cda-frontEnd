@@ -2,6 +2,7 @@ export type locationType = {
   id: number;
   dateDebut: string;
   dateFin: string;
+  prix: number;
   client: {
     id: number;
     nom: string;

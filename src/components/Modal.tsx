@@ -22,6 +22,7 @@ export const Modal = (props: propsType) => {
     id: 0,
     dateDebut: "",
     dateFin: "",
+    prix: 0,
     client: {
       id: 0,
       nom: "",
@@ -102,6 +103,12 @@ export const Modal = (props: propsType) => {
   // --------------------------------------------------------------------
   // DATE HANDLING
 
+  useEffect(() => {
+    console.log(modalInput);
+  }, [modalInput]);
+
+  //
+
   /**
    * gather input value and set them into modal state object
    * get : start date / end Date / client ID ( change string to number )
@@ -113,7 +120,6 @@ export const Modal = (props: propsType) => {
       return {
         ...prev,
         [name]: name === "selected" ? Number(value) : value,
-        prix: rentalPriceCalculation() === 0 ? 0 : rentalPriceCalculation(),
       };
     });
 
@@ -157,7 +163,9 @@ export const Modal = (props: propsType) => {
       });
       setLocationObj((prev) => {
         return {
+          ...prev,
           id: randomNumber(),
+          prix: rentalPriceCalculation() === 0 ? 0 : rentalPriceCalculation(),
           dateDebut: modalInput.date1,
           dateFin: modalInput.date2,
           client: {...client[0]},
@@ -175,7 +183,11 @@ export const Modal = (props: propsType) => {
     e.preventDefault();
     e.stopPropagation();
 
-    dataAddLocation(locationObj);
+    if (locationObj.prix === 0 || locationObj.prix < 0) {
+      console.log("Erreur sur les dates, veuillez recommencer");
+    } else {
+      dataAddLocation(locationObj);
+    }
   };
 
   // --------------------------------------------------------------------

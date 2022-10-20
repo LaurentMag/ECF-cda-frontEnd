@@ -86,6 +86,7 @@ export const Clients = () => {
           clientList.map((client) => {
             return (
               <ClientUnit
+                key={client.id}
                 id={client.id}
                 nom={client.nom}
                 prenom={client.prenom}
