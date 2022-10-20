@@ -71,7 +71,7 @@ export const HomePage = () => {
       />
 
       {vehiculeList &&
-        vehiculeList.map((vehicle) => {
+        handlefilter().map((vehicle) => {
           return (
             <VehicleUnitHome
               key={vehicle.id}
