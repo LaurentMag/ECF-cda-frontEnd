@@ -1,4 +1,6 @@
 import React, {ChangeEvent, Fragment, useEffect, useState} from "react";
+import {dataServices} from "../services/dataServices";
+import {clientType} from "../type/clientType";
 import {Button} from "./Button";
 
 type propsType = {
@@ -6,14 +8,38 @@ type propsType = {
   handleModalState: Function;
 };
 
+const URLclient: string = "http://localhost:3000/clients";
+
 export const Modal = (props: propsType) => {
+  const [clientList, setClientList] = useState<clientType[]>();
+  /**
+   * useEffect used to trigger a data fetch, only the first component is created.
+   */
+  useEffect(() => {
+    dataFetch();
+  }, []);
+
+  // ----------------------------------------------------------------------------
+  /**
+   * Fetch data using dataservices method, then set data in the react state
+   */
+  const dataFetch = () => {
+    dataServices.fetchData(URLclient).then((data) => setClientList(data));
+  };
+
+  // --------------------------------------------------------------------
+  // DATE HANDLING
+  /**
+   * create a new date and transform it into YYYY-MM-DD to be able to be apply it to the date input
+   * Add on day to the current date before return it
+   * @returns return a date in format YYYY-MM-DD
+   */
   const changeDate = (): string => {
     const dateNowArray = new Date().toLocaleDateString().split("/");
     dateNowArray[0] = String(+dateNowArray[0] + 1);
     return dateNowArray.reverse().join("-");
   };
 
-  // --------------------------------------------------------------------
   const [modalInput, setModalInput] = useState({
     date1: new Date().toLocaleDateString().split("/").reverse().join("-"),
     date2: changeDate(),
@@ -31,14 +57,16 @@ export const Modal = (props: propsType) => {
   };
 
   // --------------------------------------------------------------------
+  // MODAL HANDLING
   const handleModalState = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     props.handleModalState(e);
   };
 
   const ignoreClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    // remove prevent default otherwise the date click do not work
+    // remove prevent default otherwise input date click do not work
     //e.preventDefault();
+    // just stop the propagation to above node to prevent modal closing on "content click"
     e.stopPropagation();
   };
 
@@ -54,42 +82,61 @@ export const Modal = (props: propsType) => {
           <section
             className="modal__content"
             onClick={ignoreClick}>
+            <h2>Location de Véhicule</h2>
             <form className="modal__form">
-              <label htmlFor="date1"> Date1 : </label>
-
-              <input
-                onChange={handleInputChange}
-                value={modalInput.date1}
-                name="date1"
-                id="date1"
-                type="date"
-                min={new Date().toLocaleDateString().split("/").reverse().join("-")}
-              />
-              <label htmlFor="date2"> Date2 : </label>
-              <input
-                onChange={handleInputChange}
-                name="date2"
-                id="date2"
-                type="date"
-                value={modalInput.date2}
-                min={changeDate()}
-              />
-              <select
-                onChange={handleInputChange}
-                name="selectInput"
-                value={modalInput.selectInput}
-                id="">
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-              </select>
+              <div>
+                <label htmlFor="date1"> Date de debut de Location : </label>
+                <input
+                  onChange={handleInputChange}
+                  value={modalInput.date1}
+                  name="date1"
+                  id="date1"
+                  type="date"
+                  min={new Date().toLocaleDateString().split("/").reverse().join("-")}
+                />
+              </div>
+              <div>
+                <label htmlFor="date2"> Date de fin de Location : </label>
+                <input
+                  onChange={handleInputChange}
+                  name="date2"
+                  id="date2"
+                  type="date"
+                  value={modalInput.date2}
+                  min={changeDate()}
+                />
+              </div>
+              <div>
+                <label htmlFor="clientSelectID"> Selectionner le client : </label>
+                <select
+                  onChange={handleInputChange}
+                  name="selectInput"
+                  value={modalInput.selectInput}
+                  id="clientSelectID">
+                  {clientList &&
+                    clientList.map((client) => {
+                      return (
+                        <option value={client.id}>
+                          {client.nom} {client.prenom}
+                        </option>
+                      );
+                    })}
+                </select>
+              </div>
             </form>
 
-            <Button
-              content={"Close"}
-              extraCssClass={""}
-              handleClick={handleModalState}
-            />
+            <div className="modal__buttons-container">
+              <Button
+                content={"valider"}
+                extraCssClass={""}
+                handleClick={() => {}}
+              />
+              <Button
+                content={"Close"}
+                extraCssClass={""}
+                handleClick={handleModalState}
+              />
+            </div>
           </section>
           {/* END MODAL CONTENT */}
         </section>

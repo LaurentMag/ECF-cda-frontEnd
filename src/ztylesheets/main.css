@@ -646,9 +646,20 @@ body {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 }
-.modal__content button {
+.modal__content .modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.modal__content .modal__buttons-container {
+  display: flex;
+  gap: 1rem;
+  width: 50%;
+}
+.modal__content .modal__buttons-container button {
   width: min(10rem, 90%);
 }
 
