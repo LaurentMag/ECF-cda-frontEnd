@@ -1,17 +1,11 @@
 import React, {Fragment, useState} from "react";
-import {vehicleTypeNoID} from "../type/vehicleType";
+import {vehicleType, vehicleTypeNoID} from "../type/vehicleType";
 import {VehiculeInput} from "./VehiculeInput";
 
 import VehiclePic from "./../assets/voiture.jpg";
 
 type propsType = {
-  id: number;
-  marque: string;
-  immatriculation: string;
-  etat: string;
-  prixJournee: number;
-  disponible: boolean;
-  type: string;
+  vehicle: vehicleType;
   //
   dataDelete: Function;
   dataToPatch: Function;
@@ -34,7 +28,7 @@ export const VehicleUnit = (props: propsType) => {
    * the functin calling the deletion method from dataServices
    */
   const handleDeletion = () => {
-    props.dataDelete(props.id);
+    props.dataDelete(props.vehicle.id);
   };
 
   /**
@@ -43,7 +37,7 @@ export const VehicleUnit = (props: propsType) => {
    */
   const dataToUpdate = (data: vehicleTypeNoID) => {
     /* It's a function that is not implemented yet. */
-    props.dataToPatch(props.id, data);
+    props.dataToPatch(props.vehicle.id, data);
     setIsEdit((prev) => !prev);
   };
 
@@ -66,23 +60,18 @@ export const VehicleUnit = (props: propsType) => {
           styleFormContainer={""}
           styleInputAndLabel={"label-input"}
           /* CLIENT DATA */
-          marque={props.marque}
-          immatriculation={props.immatriculation}
-          etat={props.etat}
-          prixJournee={props.prixJournee}
-          disponible={props.disponible}
-          type={props.type}
+          vehicle={props.vehicle}
           /* work on data */
           addData={dataToUpdate}
         />
       ) : (
         <section>
-          <p>Marque : {props.marque}</p>
-          <p>Immatriculation : {props.immatriculation}</p>
-          <p>Etat : {props.etat}</p>
-          <p>Prix : {props.prixJournee}</p>
-          <p>Disponibilité : {props.disponible ? "disponible" : "Loué"}</p>
-          <p>Type : {props.type}</p>
+          <p>Marque : {props.vehicle.marque}</p>
+          <p>Immatriculation : {props.vehicle.immatriculation}</p>
+          <p>Etat : {props.vehicle.etat}</p>
+          <p>Prix : {props.vehicle.prixJournee}</p>
+          <p>Disponibilité : {props.vehicle.disponible ? "disponible" : "Loué"}</p>
+          <p>Type : {props.vehicle.type}</p>
         </section>
       )}
 

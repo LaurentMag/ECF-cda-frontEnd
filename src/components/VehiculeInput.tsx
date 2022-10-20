@@ -1,15 +1,10 @@
 import React, {Fragment, useEffect, useState} from "react";
-import {vehicleTypeNoID} from "../type/vehicleType";
+import {vehicleType, vehicleTypeNoID} from "../type/vehicleType";
 
 type propsType = {
   headerText: string;
   //
-  marque: string;
-  immatriculation: string;
-  etat: string;
-  prixJournee: number;
-  disponible: boolean;
-  type: string;
+  vehicle: vehicleType;
   //
   styleTopWrapper: string;
   styleFormContainer: string;
@@ -22,12 +17,13 @@ export const VehiculeInput = (props: propsType) => {
   // set client without ID and get value sent from props allow to have a moduable input component
   // and use it as much for client creation and client edition ( since all input will be the sames )
   const [inputState, setInputState] = useState<vehicleTypeNoID>({
-    marque: props.marque,
-    immatriculation: props.immatriculation,
-    etat: props.etat,
-    prixJournee: props.prixJournee,
-    disponible: props.disponible,
-    type: props.type,
+    marque: props.vehicle.marque,
+    model: props.vehicle.model,
+    immatriculation: props.vehicle.immatriculation,
+    etat: props.vehicle.etat,
+    prixJournee: props.vehicle.prixJournee,
+    disponible: props.vehicle.disponible,
+    type: props.vehicle.type,
   });
 
   // ------------------------------------------------------------------

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {vehicleType} from "../type/vehicleType";
 import {dataServices} from "../services/dataServices";
+import {VehicleUnitHome} from "../components/VehicleUnitHome";
 
 const URLvoiture: string = "http://localhost:3000/voitures";
 
@@ -22,5 +23,12 @@ export const HomePage = () => {
 
   // ----------------------------------------------------------------------------
   // ----------------------------------------------------------------------------
-  return <section className="home__container">{vehiculeList && <section> </section>}</section>;
+  return (
+    <section className="home__container">
+      {vehiculeList &&
+        vehiculeList.map((vehicle) => {
+          return <VehicleUnitHome vehicle={vehicle} />;
+        })}
+    </section>
+  );
 };

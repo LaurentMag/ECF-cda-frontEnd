@@ -1,6 +1,7 @@
 export type vehicleType = {
   id: number;
   marque: string;
+  model: string;
   immatriculation: string;
   etat: string;
   prixJournee: number;
@@ -10,6 +11,7 @@ export type vehicleType = {
 
 export type vehicleTypeNoID = {
   marque: string;
+  model: string;
   immatriculation: string;
   etat: string;
   prixJournee: number;

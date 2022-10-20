@@ -89,3 +89,41 @@ a:active {
   width: 100%;
   object-fit: cover;
 }
+
+label {
+  white-space: nowrap;
+}
+
+input:not(input[type="checkbox"]) {
+  height: 20px;
+  width: 100%;
+
+  border-radius: $border-radius-element-default;
+  border: none;
+
+  font-size: 1rem;
+  font-weight: 400;
+
+  &:focus {
+    outline: 2px solid rgb(78, 78, 78);
+  }
+
+  padding-left: 10px;
+}
+
+.general_image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.general_p-info-stack {
+  font-size: 1rem;
+  font-weight: 900;
+  color: rgb(107, 107, 107);
+  white-space: nowrap;
+}
+.general_span-info-stack {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(45, 36, 36);
+}

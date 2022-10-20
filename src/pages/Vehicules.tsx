@@ -78,12 +78,16 @@ export const Vehicules = () => {
           styleFormContainer={"client__main-form-container"}
           styleInputAndLabel={"label-input"}
           /* CLIENT DATA */
-          marque={""}
-          immatriculation={""}
-          etat={""}
-          prixJournee={0}
-          disponible={true}
-          type={""}
+          vehicle={{
+            id: 0,
+            marque: "",
+            model: "",
+            immatriculation: "",
+            etat: "",
+            prixJournee: 0,
+            disponible: true,
+            type: "",
+          }}
           /* work on data */
           addData={dataAdd}
         />
@@ -97,13 +101,8 @@ export const Vehicules = () => {
           vehiculeList.map((vehicule) => {
             return (
               <VehicleUnit
-                id={vehicule.id}
-                marque={vehicule.marque}
-                immatriculation={vehicule.immatriculation}
-                etat={vehicule.etat}
-                prixJournee={vehicule.prixJournee}
-                disponible={vehicule.disponible}
-                type={vehicule.type}
+                key={vehicule.id}
+                vehicle={vehicule}
                 dataDelete={dataDelete}
                 dataToPatch={dataPatch}
               />
