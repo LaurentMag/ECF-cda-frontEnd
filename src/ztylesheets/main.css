@@ -703,6 +703,23 @@ body {
   width: min(10rem, 90%);
 }
 
+.filter__form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.filter__form-container div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.filter__form-container div input {
+  max-width: 40%;
+}
+
 .home__container {
   padding: 1rem;
   display: grid;

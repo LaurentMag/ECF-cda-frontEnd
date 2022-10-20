@@ -20,7 +20,7 @@ export const Navbar = () => {
           <NavLink
             to="/"
             className="text-link">
-            Location
+            Home
           </NavLink>
         </li>
         <li>

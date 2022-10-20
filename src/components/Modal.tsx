@@ -41,8 +41,8 @@ export const Modal = (props: propsType) => {
   };
 
   const [modalInput, setModalInput] = useState({
-    date1: new Date().toLocaleDateString().split("/").reverse().join("-"),
-    date2: changeDate(),
+    date1: "",
+    date2: "",
     selectInput: "",
   });
 
@@ -132,6 +132,11 @@ export const Modal = (props: propsType) => {
                 </select>
               </div>
             </form>
+
+            <div>
+              <p> Prix de la location : </p>
+              <p> -somme- </p>
+            </div>
 
             <div className="modal__buttons-container">
               <Button

@@ -49,7 +49,7 @@
       "immatriculation": "AA-001-AA",
       "etat": "A",
       "prixJournee": 400,
-      "disponible": false,
+      "disponible": true,
       "type": "voiture"
     },
     {
@@ -69,7 +69,7 @@
       "immatriculation": "OO-007-OO",
       "etat": "S",
       "prixJournee": 8000,
-      "disponible": true,
+      "disponible": false,
       "type": "voiture"
     },
     {

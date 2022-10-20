@@ -40,6 +40,36 @@ export const FilterInput = (props: propsType) => {
   };
 
   // ------------------------------------------------------------------
+
+  const changeInput = () => {
+    if (filter.filter === "disponible") {
+      return (
+        <select
+          name="searchfor"
+          onChange={handleInputChange}>
+          <option value="">tout</option>
+          <option value="disponible">Disponible</option>
+          <option value="Loue">Loué</option>
+        </select>
+      );
+    } else if (filter.filter === "etat") {
+      return (
+        <select
+          name="searchfor"
+          onChange={handleInputChange}>
+          <option value="">tout</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+        </select>
+      );
+    }
+  };
+
+  // ------------------------------------------------------------------
   // ------------------------------------------------------------------
   return (
     <form
@@ -62,10 +92,14 @@ export const FilterInput = (props: propsType) => {
           })}
         </select>
 
-        <input
-          onChange={handleInputChange}
-          type="text"
-          name="searchfor"></input>
+        {filter.filter === "disponible" || filter.filter === "etat" ? (
+          changeInput()
+        ) : (
+          <input
+            onChange={handleInputChange}
+            type="text"
+            name="searchfor"></input>
+        )}
 
         <Button
           content={"valider"}

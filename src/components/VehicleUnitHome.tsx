@@ -22,10 +22,12 @@ export const VehicleUnitHome = (props: propsType) => {
     <section
       className={`vehicle-unit-home__container $
       ${props.vehicle.disponible ? "vehicle-default-bg" : "vehicle_rented-bg"}`}>
-      <Modal
-        isModalOpen={isModalVisible}
-        handleModalState={showModal}
-      />
+      {isModalVisible && (
+        <Modal
+          isModalOpen={isModalVisible}
+          handleModalState={showModal}
+        />
+      )}
       <figure>
         <img
           className="general_image"

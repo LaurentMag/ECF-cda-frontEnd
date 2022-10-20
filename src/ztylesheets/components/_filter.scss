@@ -1,0 +1,11 @@
+.filter__form-container {
+  @include flex-modulable(column, null, center);
+  div {
+    @include flex-modulable(null, center, center, 0.5rem);
+    flex-wrap: wrap;
+
+    input {
+      max-width: 40%;
+    }
+  }
+}
