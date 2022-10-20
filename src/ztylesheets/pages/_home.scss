@@ -2,15 +2,4 @@
   height: 100vh;
 
   @include flex-modulable(column, null, center);
-
-  div {
-    padding-block-start: 25%;
-    text-align: center;
-
-    p {
-      font-size: 2rem;
-      font-weight: 900;
-      color: rgb(141, 68, 68);
-    }
-  }
 }

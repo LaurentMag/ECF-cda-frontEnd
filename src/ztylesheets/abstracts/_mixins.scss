@@ -56,3 +56,22 @@
   gap: $gap;
   @content;
 }
+
+/* GRID AUTO_COLUMNS */
+@mixin grid-column-repeat-auto($auto, $min, $max) {
+  display: grid;
+  grid-template-columns: repeat($auto, minmax($min, $max));
+}
+
+/* GRID COLUMN GENERIC  */
+@mixin grid-column($value) {
+  display: grid;
+  grid-template-columns: $value;
+}
+
+/* GRID GAP */
+@mixin grid-gap($gap: null, $columngap: null, $rowgap: null) {
+  gap: $gap;
+  column-gap: $columngap;
+  row-gap: $rowgap;
+}

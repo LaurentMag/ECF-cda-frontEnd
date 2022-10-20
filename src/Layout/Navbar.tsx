@@ -16,13 +16,20 @@ export const Navbar = () => {
         </figure>
       </NavLink>
       <ul>
-        {/* <li>
+        <li>
           <NavLink
             to="/"
             className="text-link">
-            Home
+            Location
           </NavLink>
-        </li> */}
+        </li>
+        <li>
+          <NavLink
+            to="/gestion"
+            className="text-link">
+            Gestion Locations
+          </NavLink>
+        </li>
         <li>
           <NavLink
             to="vehicules"

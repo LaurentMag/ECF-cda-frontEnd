@@ -4,7 +4,7 @@ import {dataServices} from "../services/dataServices";
 
 const URLvoiture: string = "http://localhost:3000/voitures";
 
-export const HomePage = () => {
+export const Gestion = () => {
   const [vehiculeList, setVehiculeList] = useState<vehicleType[]>();
   /**
    * useEffect used to trigger a data fetch, only the first component is created.
@@ -22,12 +22,5 @@ export const HomePage = () => {
 
   // ----------------------------------------------------------------------------
   // ----------------------------------------------------------------------------
-  return (
-    <section className="homepage__temp">
-      <div>
-        <p> UnderConstruction </p>
-        <p> Comeback later </p>
-      </div>
-    </section>
-  );
+  return <section></section>;
 };
