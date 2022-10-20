@@ -42,7 +42,9 @@ export const VehicleUnit = (props: propsType) => {
   };
 
   return (
-    <section className="Vehicle__unit-main-container">
+    <section
+      className={`Vehicle__unit-main-container 
+      ${props.vehicle.disponible ? "vehicle-default-bg" : "vehicle_rented-bg"}`}>
       <figure>
         <img
           className="general_image"

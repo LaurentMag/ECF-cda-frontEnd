@@ -20,9 +20,8 @@ export const VehicleUnitHome = (props: propsType) => {
 
   return (
     <section
-      className={`vehicle-unit-home__container ${
-        props.vehicle.disponible ? "vehicle-default-bg" : "vehicle_rented-bg"
-      }`}>
+      className={`vehicle-unit-home__container $
+      ${props.vehicle.disponible ? "vehicle-default-bg" : "vehicle_rented-bg"}`}>
       <Modal
         isModalOpen={isModalVisible}
         handleModalState={showModal}
