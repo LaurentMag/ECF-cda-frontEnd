@@ -10,9 +10,11 @@ type propsType = {
   isModalOpen: boolean;
   vehicle: vehicleType;
   handleModalState: Function;
+  dataPatchVehicle: Function;
 };
 
 const URLclient: string = "http://localhost:3000/clients";
+const URLvoiture: string = "http://localhost:3000/voitures";
 const URLlocation: string = "http://localhost:3000/location";
 
 export const Modal = (props: propsType) => {
@@ -66,12 +68,12 @@ export const Modal = (props: propsType) => {
    * useEffect used to trigger a data fetch, only the first component is created.
    */
   useEffect(() => {
-    dataFetch();
+    dataFetchClient();
   }, []);
   /**
    * Fetch data using dataservices method, then set data in the react state
    */
-  const dataFetch = () => {
+  const dataFetchClient = () => {
     dataServices.fetchData(URLclient).then((data) => setClientList(data));
   };
   /**
@@ -82,6 +84,7 @@ export const Modal = (props: propsType) => {
   const dataAddLocation = (data: locationType) => {
     dataServices.postData(URLlocation, data);
   };
+
   // --------------------------------------------------------------------
   // MODAL STATE HANDLING
   /**
@@ -187,6 +190,11 @@ export const Modal = (props: propsType) => {
       console.log("Erreur sur les dates, veuillez recommencer");
     } else {
       dataAddLocation(locationObj);
+
+      // patch rented vehicle to change aviability status
+      props.dataPatchVehicle(props.vehicle.id, {disponible: !props.vehicle.disponible});
+
+      props.handleModalState(e);
     }
   };
 

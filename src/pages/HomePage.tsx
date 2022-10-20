@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import {vehicleType} from "../type/vehicleType";
 import {dataServices} from "../services/dataServices";
 import {VehicleUnitHome} from "../components/VehicleUnitHome";
@@ -22,6 +22,15 @@ export const HomePage = () => {
    */
   const dataFetch = () => {
     dataServices.fetchData(URLvoiture).then((data) => setVehiculeList(data));
+  };
+
+  /**
+   *
+   * @param id id of the selected Vehicle object
+   * @param data data coming from edit mode to patch and update somes informations
+   */
+  const dataPatchVehicle = (id: number, data: any) => {
+    dataServices.patchData(URLvoiture, id, data).then(() => dataFetch());
   };
 
   // ----------------------------------------------------------------------------
@@ -64,21 +73,24 @@ export const HomePage = () => {
   // ----------------------------------------------------------------------------
   // ----------------------------------------------------------------------------
   return (
-    <section className="home__container">
+    <Fragment>
       <FilterInput
         filterOn={["marque", "model", "etat", "disponible"]}
         getFilter={receiveFilterData}
       />
 
-      {vehiculeList &&
-        handlefilter().map((vehicle) => {
-          return (
-            <VehicleUnitHome
-              key={vehicle.id}
-              vehicle={vehicle}
-            />
-          );
-        })}
-    </section>
+      <section className="home__container">
+        {vehiculeList &&
+          handlefilter().map((vehicle) => {
+            return (
+              <VehicleUnitHome
+                key={vehicle.id}
+                vehicle={vehicle}
+                dataPatchVehicle={dataPatchVehicle}
+              />
+            );
+          })}
+      </section>
+    </Fragment>
   );
 };

@@ -7,6 +7,7 @@ import {Modal} from "./Modal";
 
 type propsType = {
   vehicle: vehicleType;
+  dataPatchVehicle: Function;
 };
 
 export const VehicleUnitHome = (props: propsType) => {
@@ -16,7 +17,9 @@ export const VehicleUnitHome = (props: propsType) => {
     setIsModalVisible((prev) => !prev);
   };
 
-  const handleRentalCreation = () => {};
+  const dataPatchVehicle = (id: number, data: any) => {
+    props.dataPatchVehicle(id, data);
+  };
 
   return (
     <section
@@ -27,6 +30,7 @@ export const VehicleUnitHome = (props: propsType) => {
           isModalOpen={isModalVisible}
           vehicle={props.vehicle}
           handleModalState={showModal}
+          dataPatchVehicle={dataPatchVehicle}
         />
       )}
       <figure>
