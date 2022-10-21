@@ -5,8 +5,7 @@
 
   background-color: $color_background-cards;
 
-  display: flex;
-  justify-content: center;
+  @include flex-modulable(null, center, null, 1rem);
   flex-wrap: wrap;
   gap: 1rem;
 }

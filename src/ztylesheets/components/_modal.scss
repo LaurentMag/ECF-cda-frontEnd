@@ -3,9 +3,7 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 0.6);
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-modulable(null, center, center);
 
   z-index: 2;
 }
@@ -16,25 +14,20 @@
   background-color: rgb(231, 231, 231);
   border-radius: 10px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  @include flex-modulable(column, space-around, center, 1rem);
 
   .modal__form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+    @include flex-modulable(column, null, null, 1rem);
 
-  .modal__buttons-container {
-    display: flex;
-    gap: 1rem;
+    .modal__buttons-container {
+      display: flex;
+      gap: 1rem;
 
-    width: 50%;
+      width: 50%;
 
-    button {
-      width: min(10rem, 90%);
+      button {
+        width: min(10rem, 90%);
+      }
     }
   }
 }
