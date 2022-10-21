@@ -19,6 +19,32 @@ type propsType = {
 export const Modal = (props: propsType) => {
   const [clientList, setClientList] = useState<clientType[]>();
 
+  /**
+   * create a new date and transform it into YYYY-MM-DD to be able to be apply it to the date input
+   * Add on day to the current date before return it
+   * @returns return a date in format YYYY-MM-DD
+   */
+  const changeDate = (): string => {
+    const dateNowArray = new Date().toLocaleDateString().split("/");
+    dateNowArray[0] = String(+dateNowArray[0] + 1);
+    return dateNowArray.reverse().join("-");
+  };
+
+  const [modalInput, setModalInput] = useState({
+    date1: `${new Date().toLocaleDateString().split("/").reverse().join("-")}`,
+    date2: `${changeDate()}`,
+    clientID: 0,
+  });
+
+  // ---------------------------
+  // update locationObj once the modalInput state has change to retrice the correct information
+  // so the correct pricing  calculation based on selected dates
+  useEffect(() => {
+    handleLocationObjectCreation(
+      tools.rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee)
+    );
+  }, [modalInput]);
+
   const [locationObj, setLocationObj] = useState<locationType>({
     id: 0,
     dateDebut: "",
@@ -44,22 +70,6 @@ export const Modal = (props: propsType) => {
     },
   });
 
-  /**
-   * create a new date and transform it into YYYY-MM-DD to be able to be apply it to the date input
-   * Add on day to the current date before return it
-   * @returns return a date in format YYYY-MM-DD
-   */
-  const changeDate = (): string => {
-    const dateNowArray = new Date().toLocaleDateString().split("/");
-    dateNowArray[0] = String(+dateNowArray[0] + 1);
-    return dateNowArray.reverse().join("-");
-  };
-
-  const [modalInput, setModalInput] = useState({
-    date1: `${new Date().toLocaleDateString().split("/").reverse().join("-")}`,
-    date2: `${changeDate()}`,
-    clientID: 0,
-  });
   // --------------------------------------------------------------------
   /**
    * useEffect used to trigger a data fetch, only the first component is created.
@@ -102,7 +112,6 @@ export const Modal = (props: propsType) => {
 
   // --------------------------------------------------------------------
   // DATE / CLIENT ID HANDLING
-
   /**
    * gather input value and set them into modal state object
    * get : start date / end Date / client ID ( change string to number )
@@ -120,9 +129,7 @@ export const Modal = (props: propsType) => {
 
   // --------------------------------------------------------------------
   // --------------------------------------------------------------------
-  // RENTAL VALIDATION:
-
-  // ---------------------------
+  // RENTAL :
   /**
    * generate a new location object based on modalInput state values
    * to retrive dates, selected client and vehicle
@@ -148,16 +155,8 @@ export const Modal = (props: propsType) => {
   };
 
   // ---------------------------
-  // update locationObj once the modalInput state has change to retrice the correct information
-  // so the correct pricing  calculation based on selected dates
-  useEffect(() => {
-    handleLocationObjectCreation(
-      tools.rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee)
-    );
-  }, [modalInput]);
-
-  // ---------------------------
   /**
+   * Modal validation button press
    * create the location object in the "data base / json server"
    * @param e button mouse click event
    */
@@ -169,11 +168,11 @@ export const Modal = (props: propsType) => {
 
     // check if the price is valid ( if not > 0 mean selected date arent correct )
     if (currentprice > 0) {
+      // create locationObject
       dataAddLocation(locationObj);
-
       // patch rented vehicle to change aviability status
       props.dataPatchVehicle(props.vehicle.id, {disponible: !props.vehicle.disponible});
-
+      // close modal after validation
       props.handleModalState(e);
     } else {
       console.log("Erreur sur les dates, veuillez recommencer");

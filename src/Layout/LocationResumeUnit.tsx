@@ -31,30 +31,34 @@ export const LocationResumeUnit = (props: propsType) => {
           </div>
         </section>
       </section>
-      <section className="gestionlocation_date">
-        <p>Date : </p>
-        <p>
-          {props.locationObject.dateDebut} au {props.locationObject.dateDebut}
-        </p>
-      </section>
-      <section className="gestionlocation_client">
-        <div>
-          <p className="general_p-info-stack">
-            Nom: <span className="general_span-info-stack">{props.locationObject.client.nom}</span>
+
+      <div>
+        <section className="gestionlocation_date">
+          <p>Date : </p>
+          <p>
+            {props.locationObject.dateDebut} au {props.locationObject.dateDebut}
           </p>
-          <p className="general_p-info-stack">
-            Prenom: <span className="general_span-info-stack">{props.locationObject.client.prenom}</span>
-          </p>
-        </div>
-        <div className="client-unit__one-info-stack">
-          <p className="general_p-info-stack">
-            Email: <span className="general_span-info-stack">{props.locationObject.client.email}</span>
-          </p>
-          <p className="general_p-info-stack">
-            Telephone: <span className="general_span-info-stack">{props.locationObject.client.telephone}</span>
-          </p>
-        </div>
-      </section>
+        </section>
+
+        <section className="gestionlocation_client">
+          <div>
+            <p className="general_p-info-stack">
+              Nom: <span className="general_span-info-stack">{props.locationObject.client.nom}</span>
+            </p>
+            <p className="general_p-info-stack">
+              Prenom: <span className="general_span-info-stack">{props.locationObject.client.prenom}</span>
+            </p>
+          </div>
+          <div className="client-unit__one-info-stack">
+            <p className="general_p-info-stack">
+              Email: <span className="general_span-info-stack">{props.locationObject.client.email}</span>
+            </p>
+            <p className="general_p-info-stack">
+              Telephone: <span className="general_span-info-stack">{props.locationObject.client.telephone}</span>
+            </p>
+          </div>
+        </section>
+      </div>
     </section>
   );
 };

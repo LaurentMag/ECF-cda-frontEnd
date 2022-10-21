@@ -696,12 +696,12 @@ body {
   flex-direction: column;
   gap: 1rem;
 }
-.modal__content .modal__form .modal__buttons-container {
+.modal__content .modal__buttons-container {
   display: flex;
   gap: 1rem;
   width: 50%;
 }
-.modal__content .modal__form .modal__buttons-container button {
+.modal__content .modal__buttons-container button {
   width: min(10rem, 90%);
 }
 
@@ -725,15 +725,27 @@ body {
 .gestionlocation__container {
   border-radius: 10px;
   padding: 1rem;
-  width: min(70rem, 95%);
+  margin-inline: auto;
   background-color: rgb(187, 187, 187);
-  display: grid;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.gestionlocation__container > div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .gestionlocation_voiture {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
+  flex-basis: 395px;
+  flex-grow: 1;
   padding: 1rem;
   background-color: rgb(168, 168, 168);
   border-radius: 10px;

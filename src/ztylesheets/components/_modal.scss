@@ -18,16 +18,16 @@
 
   .modal__form {
     @include flex-modulable(column, null, null, 1rem);
+  }
 
-    .modal__buttons-container {
-      display: flex;
-      gap: 1rem;
+  .modal__buttons-container {
+    display: flex;
+    gap: 1rem;
 
-      width: 50%;
+    width: 50%;
 
-      button {
-        width: min(10rem, 90%);
-      }
+    button {
+      width: min(10rem, 90%);
     }
   }
 }
