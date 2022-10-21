@@ -2,7 +2,7 @@ import React, {useState, useEffect, Fragment} from "react";
 //
 import {vehicleType, vehicleTypeNoID} from "../type/vehicleType";
 import {filterType} from "../type/filterType";
-import {handlefilterVehicle, randomNumber} from "../services/tools";
+import {tools} from "../services/tools";
 import {dataServices} from "../services/dataServices";
 import {dataURL} from "../services/dataUrl";
 //
@@ -39,7 +39,7 @@ export const Vehicules = () => {
     console.log(data);
     const addedID = {
       ...data,
-      id: randomNumber(),
+      id: tools.randomNumber(),
     };
     dataServices.postData(dataURL.vehicles, addedID).then(() => dataFetch());
   };
@@ -110,7 +110,7 @@ export const Vehicules = () => {
         />
 
         {vehiculeList &&
-          handlefilterVehicle(vehiculeList, filter).map((vehicule) => {
+          tools.handlefilterVehicle(vehiculeList, filter).map((vehicule) => {
             return (
               <VehicleUnit
                 key={vehicule.id}

@@ -1,6 +1,6 @@
 import React, {ChangeEvent, Fragment, useEffect, useState} from "react";
 //
-import {randomNumber, rentalPriceCalculation} from "../services/tools";
+import {tools} from "../services/tools";
 import {dataServices} from "../services/dataServices";
 import {dataURL} from "../services/dataUrl";
 import {clientType} from "../type/clientType";
@@ -136,7 +136,7 @@ export const Modal = (props: propsType) => {
       setLocationObj((prev) => {
         return {
           ...prev,
-          id: randomNumber(),
+          id: tools.randomNumber(),
           prix: priceParam,
           dateDebut: modalInput.date1,
           dateFin: modalInput.date2,
@@ -151,7 +151,9 @@ export const Modal = (props: propsType) => {
   // update locationObj once the modalInput state has change to retrice the correct information
   // so the correct pricing  calculation based on selected dates
   useEffect(() => {
-    handleLocationObjectCreation(rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee));
+    handleLocationObjectCreation(
+      tools.rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee)
+    );
   }, [modalInput]);
 
   // ---------------------------
@@ -163,7 +165,7 @@ export const Modal = (props: propsType) => {
     e.preventDefault();
     e.stopPropagation();
 
-    const currentprice = rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee);
+    const currentprice = tools.rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee);
 
     // check if the price is valid ( if not > 0 mean selected date arent correct )
     if (currentprice > 0) {
@@ -238,9 +240,9 @@ export const Modal = (props: propsType) => {
             <div>
               <p> Prix de la location : </p>
               <p>
-                {rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee) === 0
+                {tools.rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee) === 0
                   ? "Veuillez séléctionner des dates correct"
-                  : rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee)}
+                  : tools.rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee)}
               </p>
             </div>
 

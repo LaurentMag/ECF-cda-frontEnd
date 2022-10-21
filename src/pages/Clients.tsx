@@ -6,7 +6,7 @@ import {dataServices} from "../services/dataServices";
 import {dataURL} from "../services/dataUrl";
 import {clientType, clientTypeNoID} from "../type/clientType";
 //
-import {handlefilterClient, randomNumber} from "../services/tools";
+import {tools} from "../services/tools";
 import {FilterInput} from "../components/FilterInput";
 import {filterType} from "../type/filterType";
 
@@ -41,7 +41,7 @@ export const Clients = () => {
   const dataAdd = (data: clientTypeNoID) => {
     const addedID = {
       ...data,
-      id: randomNumber(),
+      id: tools.randomNumber(),
     };
     dataServices.postData(dataURL.client, addedID).then(() => dataFetch());
   };
@@ -105,7 +105,7 @@ export const Clients = () => {
           prevent potential error if async fetch isnt done when comp is created
         */}
         {clientList &&
-          handlefilterClient(clientList, filter).map((client) => {
+          tools.handlefilterClient(clientList, filter).map((client) => {
             return (
               <ClientUnit
                 key={client.id}

@@ -60,7 +60,7 @@
       "immatriculation": "PE-101-GO",
       "etat": "B",
       "prixJournee": 100,
-      "disponible": true,
+      "disponible": false,
       "type": "voiture"
     },
     {
@@ -115,6 +115,31 @@
         "etat": "S",
         "prixJournee": 8000,
         "disponible": false,
+        "type": "voiture"
+      }
+    },
+    {
+      "id": 68742156169664,
+      "dateDebut": "2022-10-21",
+      "dateFin": "2022-10-29",
+      "prix": 800,
+      "client": {
+        "id": 4,
+        "nom": "Brenda",
+        "prenom": "TreeBurns",
+        "dateDeNaissance": "1970-12-25",
+        "email": "brendaTree@gmail.com",
+        "telephone": "0605050505"
+      },
+      "voiture": {
+        "1": false,
+        "id": 1,
+        "marque": "Peugeot",
+        "model": "666",
+        "immatriculation": "PE-101-GO",
+        "etat": "B",
+        "prixJournee": 100,
+        "disponible": true,
         "type": "voiture"
       }
     }

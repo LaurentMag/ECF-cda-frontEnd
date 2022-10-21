@@ -7,7 +7,7 @@ import {dataServices} from "../services/dataServices";
 import {dataURL} from "../services/dataUrl";
 //
 import {VehicleUnitHome} from "../components/VehicleUnitHome";
-import {handlefilterVehicle} from "../services/tools";
+import {tools} from "../services/tools";
 
 export const HomePage = () => {
   const [vehiculeList, setVehiculeList] = useState<vehicleType[]>();
@@ -61,7 +61,7 @@ export const HomePage = () => {
 
       <section className="home__container">
         {vehiculeList &&
-          handlefilterVehicle(vehiculeList, filter).map((vehicle) => {
+          tools.handlefilterVehicle(vehiculeList, filter).map((vehicle) => {
             return (
               <VehicleUnitHome
                 key={vehicle.id}
