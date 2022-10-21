@@ -49,7 +49,7 @@
       "immatriculation": "AA-001-AA",
       "etat": "A",
       "prixJournee": 400,
-      "disponible": false,
+      "disponible": true,
       "type": "voiture"
     },
     {
@@ -90,7 +90,7 @@
       "immatriculation": "RU-901-UR",
       "etat": "E",
       "prixJournee": 20,
-      "disponible": false,
+      "disponible": true,
       "type": "voiture"
     }
   ],
