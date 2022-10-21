@@ -5,18 +5,23 @@
 
   background-color: $color_background-cards;
 
-  @include flex-modulable(null, center, null, 1rem);
-  flex-wrap: wrap;
-  gap: 1rem;
+  // @include flex-modulable(null, center, null, 1rem);
+  // flex-wrap: wrap;
+  // gap: 1rem;
+
+  display: grid;
+  grid-template-columns: auto-fit, minmax();
 }
 
 .gestionlocation_voiture {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
-  background-color: rgb(168, 168, 168);
-  border-radius: $border-radius-element-default;
 
   padding: 1rem;
+
+  background-color: rgb(168, 168, 168);
+  border-radius: $border-radius-element-default;
 
   figure {
     width: 15rem;

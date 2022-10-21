@@ -7,10 +7,14 @@ import {dataServices} from "../services/dataServices";
 import {dataURL} from "../services/dataUrl";
 //
 import {VehicleUnitHome} from "../components/VehicleUnitHome";
+import {handlefilterVehicle} from "../services/tools";
 
 export const HomePage = () => {
   const [vehiculeList, setVehiculeList] = useState<vehicleType[]>();
-  const [filter, setFilter] = useState<filterType>();
+  const [filter, setFilter] = useState<filterType>({
+    filter: "",
+    searchfor: "",
+  });
   /**
    * useEffect used to trigger a data fetch, only the first component is created.
    */
@@ -46,31 +50,6 @@ export const HomePage = () => {
     setFilter(filter);
   };
 
-  /**
-   * Return a array containing only filtered data, or the initial list if no filter was setup
-   * @returns filtered array according to filter selection
-   */
-  const handlefilter = (): vehicleType[] => {
-    let filteredDataArr: vehicleType[] = [];
-
-    if (vehiculeList) {
-      if (!filter || filter.searchfor == "") {
-        filteredDataArr = vehiculeList;
-      } else {
-        filteredDataArr = vehiculeList.filter((vehicle) => {
-          const attrValue: string | number | boolean = vehicle[filter.filter as keyof vehicleType];
-          if (typeof attrValue === "string") {
-            return attrValue.toLowerCase().includes(filter.searchfor.toLowerCase());
-          } else if (typeof attrValue === "boolean") {
-            const checkIn: boolean = ["disponible"].includes(filter.searchfor.toLowerCase());
-            return attrValue === checkIn;
-          }
-        });
-      }
-    }
-    return filteredDataArr;
-  };
-
   // ----------------------------------------------------------------------------
   // ----------------------------------------------------------------------------
   return (
@@ -82,7 +61,7 @@ export const HomePage = () => {
 
       <section className="home__container">
         {vehiculeList &&
-          handlefilter().map((vehicle) => {
+          handlefilterVehicle(vehiculeList, filter).map((vehicle) => {
             return (
               <VehicleUnitHome
                 key={vehicle.id}

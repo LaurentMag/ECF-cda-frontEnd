@@ -2,7 +2,7 @@ import React, {useState, useEffect, Fragment} from "react";
 //
 import {vehicleType, vehicleTypeNoID} from "../type/vehicleType";
 import {filterType} from "../type/filterType";
-import {randomNumber} from "../services/tools";
+import {handlefilterVehicle, randomNumber} from "../services/tools";
 import {dataServices} from "../services/dataServices";
 import {dataURL} from "../services/dataUrl";
 //
@@ -12,7 +12,10 @@ import {FilterInput} from "../components/FilterInput";
 
 export const Vehicules = () => {
   const [vehiculeList, setVehiculeList] = useState<vehicleType[]>();
-  const [filter, setFilter] = useState<filterType>();
+  const [filter, setFilter] = useState<filterType>({
+    filter: "",
+    searchfor: "",
+  });
   /**
    * useEffect used to trigger a data fetch, only the first component is created.
    */
@@ -74,31 +77,6 @@ export const Vehicules = () => {
     setFilter(filter);
   };
 
-  /**
-   * Return a array containing only filtered data, or the initial list if no filter was setup
-   * @returns filtered array according to filter selection
-   */
-  const handlefilter = (): vehicleType[] => {
-    let filteredDataArr: vehicleType[] = [];
-
-    if (vehiculeList) {
-      if (!filter || filter.searchfor == "") {
-        filteredDataArr = vehiculeList;
-      } else {
-        filteredDataArr = vehiculeList.filter((vehicle) => {
-          const attrValue: string | number | boolean = vehicle[filter.filter as keyof vehicleType];
-          if (typeof attrValue === "string") {
-            return attrValue.toLowerCase().includes(filter.searchfor.toLowerCase());
-          } else if (typeof attrValue === "boolean") {
-            const checkIn: boolean = ["disponible"].includes(filter.searchfor.toLowerCase());
-            return attrValue === checkIn;
-          }
-        });
-      }
-    }
-    return filteredDataArr;
-  };
-
   // ----------------------------------------------------------------------------
   // ----------------------------------------------------------------------------
   return (
@@ -132,7 +110,7 @@ export const Vehicules = () => {
         />
 
         {vehiculeList &&
-          handlefilter().map((vehicule) => {
+          handlefilterVehicle(vehiculeList, filter).map((vehicule) => {
             return (
               <VehicleUnit
                 key={vehicule.id}

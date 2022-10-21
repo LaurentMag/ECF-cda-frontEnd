@@ -727,19 +727,16 @@ body {
   padding: 1rem;
   width: min(70rem, 95%);
   background-color: rgb(187, 187, 187);
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: grid;
 }
 
 .gestionlocation_voiture {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
+  padding: 1rem;
   background-color: rgb(168, 168, 168);
   border-radius: 10px;
-  padding: 1rem;
 }
 .gestionlocation_voiture figure {
   width: 15rem;

@@ -1,6 +1,6 @@
 import React, {ChangeEvent, Fragment, useEffect, useState} from "react";
 //
-import {randomNumber} from "../services/tools";
+import {randomNumber, rentalPriceCalculation} from "../services/tools";
 import {dataServices} from "../services/dataServices";
 import {dataURL} from "../services/dataUrl";
 import {clientType} from "../type/clientType";
@@ -122,30 +122,6 @@ export const Modal = (props: propsType) => {
   // --------------------------------------------------------------------
   // RENTAL VALIDATION:
 
-  /**
-   *  Generate price depending of number of rental day
-   * Check if date selection arent incorrect before generating the price
-   * @returns price
-   */
-  const rentalPriceCalculation = () => {
-    const dayConvert: number = 1000 * 60 * 60 * 24;
-    const dateStart: Date = new Date(modalInput.date1);
-    const dateEnd: Date = new Date(modalInput.date2);
-
-    let price: number = 0;
-    let getDayCount: number;
-
-    getDayCount = Math.ceil(dateEnd.getTime() - dateStart.getTime()) / dayConvert;
-
-    if (getDayCount > 0) {
-      price = getDayCount * props.vehicle.prixJournee;
-    } else {
-      console.log("les dates ne sont pas correct ");
-    }
-
-    return price;
-  };
-
   // ---------------------------
   /**
    * generate a new location object based on modalInput state values
@@ -175,7 +151,7 @@ export const Modal = (props: propsType) => {
   // update locationObj once the modalInput state has change to retrice the correct information
   // so the correct pricing  calculation based on selected dates
   useEffect(() => {
-    handleLocationObjectCreation(rentalPriceCalculation());
+    handleLocationObjectCreation(rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee));
   }, [modalInput]);
 
   // ---------------------------
@@ -187,8 +163,10 @@ export const Modal = (props: propsType) => {
     e.preventDefault();
     e.stopPropagation();
 
+    const currentprice = rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee);
+
     // check if the price is valid ( if not > 0 mean selected date arent correct )
-    if (rentalPriceCalculation() > 0) {
+    if (currentprice > 0) {
       dataAddLocation(locationObj);
 
       // patch rented vehicle to change aviability status
@@ -259,7 +237,11 @@ export const Modal = (props: propsType) => {
 
             <div>
               <p> Prix de la location : </p>
-              <p> {rentalPriceCalculation() === 0 ? "Dates incorrects" : rentalPriceCalculation()} </p>
+              <p>
+                {rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee) === 0
+                  ? "Veuillez séléctionner des dates correct"
+                  : rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee)}
+              </p>
             </div>
 
             <div className="modal__buttons-container">

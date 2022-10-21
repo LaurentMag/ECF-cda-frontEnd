@@ -6,13 +6,16 @@ import {dataServices} from "../services/dataServices";
 import {dataURL} from "../services/dataUrl";
 import {clientType, clientTypeNoID} from "../type/clientType";
 //
-import {randomNumber} from "../services/tools";
+import {handlefilterClient, randomNumber} from "../services/tools";
 import {FilterInput} from "../components/FilterInput";
 import {filterType} from "../type/filterType";
 
 export const Clients = () => {
   const [clientList, setClientList] = useState<clientType[]>();
-  const [filter, setFilter] = useState<filterType>();
+  const [filter, setFilter] = useState<filterType>({
+    filter: "",
+    searchfor: "",
+  });
   /**
    * useEffect used to trigger a data fetch, only the first component is created.
    */
@@ -71,29 +74,6 @@ export const Clients = () => {
     setFilter(filter);
   };
 
-  /**
-   * Return a array containing only filtered data, or the initial list if no filter was setup
-   * @returns filtered array according to filter selection
-   */
-  const handlefilter = (): clientType[] => {
-    let filteredDataArr: clientType[] = [];
-
-    if (clientList) {
-      if (!filter || filter.searchfor === "") {
-        filteredDataArr = clientList;
-      } else {
-        filteredDataArr = clientList.filter((client) => {
-          const attrValue: string | number = client[filter.filter as keyof clientType];
-
-          if (typeof attrValue === "string") {
-            return attrValue.toLowerCase().includes(filter.searchfor.toLowerCase());
-          }
-        });
-      }
-    }
-    return filteredDataArr;
-  };
-
   // ------------------------------------------------------------------
   // ------------------------------------------------------------------
   return (
@@ -125,7 +105,7 @@ export const Clients = () => {
           prevent potential error if async fetch isnt done when comp is created
         */}
         {clientList &&
-          handlefilter().map((client) => {
+          handlefilterClient(clientList, filter).map((client) => {
             return (
               <ClientUnit
                 key={client.id}

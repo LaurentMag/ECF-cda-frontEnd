@@ -117,30 +117,6 @@
         "disponible": false,
         "type": "voiture"
       }
-    },
-    {
-      "id": 18376568910341,
-      "dateDebut": "2022-10-21",
-      "dateFin": "2022-10-26",
-      "prix": 2000,
-      "client": {
-        "id": 2,
-        "nom": "Dylon",
-        "prenom": "Tehbot",
-        "dateDeNaissance": "1980-10-03",
-        "email": "dylonTeh@gmail.com",
-        "telephone": "0603030303"
-      },
-      "voiture": {
-        "id": 0,
-        "marque": "Renault",
-        "model": "Sinic",
-        "immatriculation": "AA-001-AA",
-        "etat": "A",
-        "prixJournee": 400,
-        "disponible": true,
-        "type": "voiture"
-      }
     }
   ]
 }
