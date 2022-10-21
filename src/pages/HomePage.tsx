@@ -62,7 +62,7 @@ export const HomePage = () => {
           if (typeof attrValue === "string") {
             return attrValue.toLowerCase().includes(filter.searchfor.toLowerCase());
           } else if (typeof attrValue === "boolean") {
-            const checkIn: boolean = ["disponible"].includes(filter.searchfor.toLocaleLowerCase());
+            const checkIn: boolean = ["disponible"].includes(filter.searchfor.toLowerCase());
             return attrValue === checkIn;
           }
         });

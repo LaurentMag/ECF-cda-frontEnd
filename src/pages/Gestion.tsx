@@ -4,7 +4,7 @@ import {dataURL} from "../services/dataUrl";
 import {dataServices} from "../services/dataServices";
 import {locationType} from "../type/locationType";
 //
-import {LocationResumeUnit} from "../components/LocationResumeUnit";
+import {LocationResumeUnit} from "../Layout/LocationResumeUnit";
 
 export const Gestion = () => {
   const [locationList, setLocationList] = useState<locationType[]>();
