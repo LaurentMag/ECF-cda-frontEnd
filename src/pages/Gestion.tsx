@@ -1,10 +1,10 @@
 import React, {Fragment, useEffect, useState} from "react";
-import {vehicleType} from "../type/vehicleType";
+//
+import {dataURL} from "../services/dataUrl";
 import {dataServices} from "../services/dataServices";
 import {locationType} from "../type/locationType";
+//
 import {LocationResumeUnit} from "../components/LocationResumeUnit";
-
-const URLlocation: string = "http://localhost:3000/location";
 
 export const Gestion = () => {
   const [locationList, setLocationList] = useState<locationType[]>();
@@ -19,7 +19,7 @@ export const Gestion = () => {
    * Fetch data using dataservices method, then set data in the react state
    */
   const dataFetch = () => {
-    dataServices.fetchData(URLlocation).then((data) => setLocationList(data));
+    dataServices.fetchData(dataURL.location).then((data) => setLocationList(data));
   };
 
   // ----------------------------------------------------------------------------

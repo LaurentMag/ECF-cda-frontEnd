@@ -1,9 +1,12 @@
 import React, {ChangeEvent, Fragment, useEffect, useState} from "react";
-import {dataServices} from "../services/dataServices";
+//
 import {randomNumber} from "../services/tools";
+import {dataServices} from "../services/dataServices";
+import {dataURL} from "../services/dataUrl";
 import {clientType} from "../type/clientType";
 import {vehicleType} from "../type/vehicleType";
 import {locationType} from "../type/locationType";
+//
 import {Button} from "./Button";
 
 type propsType = {
@@ -12,9 +15,6 @@ type propsType = {
   handleModalState: Function;
   dataPatchVehicle: Function;
 };
-
-const URLclient: string = "http://localhost:3000/clients";
-const URLlocation: string = "http://localhost:3000/location";
 
 export const Modal = (props: propsType) => {
   const [clientList, setClientList] = useState<clientType[]>();
@@ -71,7 +71,7 @@ export const Modal = (props: propsType) => {
    * Fetch data using dataservices method, then set data in the react state
    */
   const dataFetchClient = () => {
-    dataServices.fetchData(URLclient).then((data) => setClientList(data));
+    dataServices.fetchData(dataURL.client).then((data) => setClientList(data));
   };
   /**
    * retrice data send from Clientinput, insert an ID and pass to to the REST POST
@@ -79,7 +79,7 @@ export const Modal = (props: propsType) => {
    * @param data
    */
   const dataAddLocation = (data: locationType) => {
-    dataServices.postData(URLlocation, data);
+    dataServices.postData(dataURL.location, data);
   };
 
   // --------------------------------------------------------------------

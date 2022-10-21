@@ -1,13 +1,14 @@
 import React, {useState, useEffect, Fragment} from "react";
+//
 import {vehicleType, vehicleTypeNoID} from "../type/vehicleType";
+import {filterType} from "../type/filterType";
 import {randomNumber} from "../services/tools";
 import {dataServices} from "../services/dataServices";
+import {dataURL} from "../services/dataUrl";
+//
 import {VehicleUnit} from "../components/VehicleUnit";
 import {VehiculeInput} from "../components/VehiculeInput";
 import {FilterInput} from "../components/FilterInput";
-import {filterType} from "../type/filterType";
-
-const URLvoiture: string = "http://localhost:3000/voitures";
 
 export const Vehicules = () => {
   const [vehiculeList, setVehiculeList] = useState<vehicleType[]>();
@@ -23,7 +24,7 @@ export const Vehicules = () => {
    * Fetch data using dataservices method, then set data in the react state
    */
   const dataFetch = () => {
-    dataServices.fetchData(URLvoiture).then((data) => setVehiculeList(data));
+    dataServices.fetchData(dataURL.vehicles).then((data) => setVehiculeList(data));
   };
   // ----------------------------------------------------------------------------
   /**
@@ -37,7 +38,7 @@ export const Vehicules = () => {
       ...data,
       id: randomNumber(),
     };
-    dataServices.postData(URLvoiture, addedID).then(() => dataFetch());
+    dataServices.postData(dataURL.vehicles, addedID).then(() => dataFetch());
   };
   // ----------------------------------------------------------------------------
 
@@ -47,7 +48,7 @@ export const Vehicules = () => {
    * @param data data coming from edit mode to patch and update somes informations
    */
   const dataPatch = (id: number, data: any) => {
-    dataServices.patchData(URLvoiture, id, data).then(() => dataFetch());
+    dataServices.patchData(dataURL.vehicles, id, data).then(() => dataFetch());
   };
 
   // ----------------------------------------------------------------------------
@@ -58,7 +59,7 @@ export const Vehicules = () => {
    * @param id client id coming from clientUnit map
    */
   const dataDelete = (id: number) => {
-    dataServices.deleteData(URLvoiture, id).then(() => dataFetch());
+    dataServices.deleteData(dataURL.vehicles, id).then(() => dataFetch());
   };
 
   // ----------------------------------------------------------------------------

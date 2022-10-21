@@ -1,11 +1,10 @@
 import React, {Fragment, useEffect, useState} from "react";
 import {vehicleType} from "../type/vehicleType";
 import {dataServices} from "../services/dataServices";
+import {dataURL} from "../services/dataUrl";
 import {VehicleUnitHome} from "../components/VehicleUnitHome";
 import {filterType} from "../type/filterType";
 import {FilterInput} from "../components/FilterInput";
-
-const URLvoiture: string = "http://localhost:3000/voitures";
 
 export const HomePage = () => {
   const [vehiculeList, setVehiculeList] = useState<vehicleType[]>();
@@ -21,7 +20,7 @@ export const HomePage = () => {
    * Fetch data using dataservices method, then set data in the react state
    */
   const dataFetch = () => {
-    dataServices.fetchData(URLvoiture).then((data) => setVehiculeList(data));
+    dataServices.fetchData(dataURL.client).then((data) => setVehiculeList(data));
   };
 
   /**
@@ -30,7 +29,7 @@ export const HomePage = () => {
    * @param data data coming from edit mode to patch and update somes informations
    */
   const dataPatchVehicle = (id: number, data: any) => {
-    dataServices.patchData(URLvoiture, id, data).then(() => dataFetch());
+    dataServices.patchData(dataURL.client, id, data).then(() => dataFetch());
   };
 
   // ----------------------------------------------------------------------------

@@ -3,13 +3,12 @@ import {ClientInput} from "../components/ClientInput";
 import {ClientUnit} from "../components/ClientUnit";
 //
 import {dataServices} from "../services/dataServices";
+import {dataURL} from "../services/dataUrl";
 import {clientType, clientTypeNoID} from "../type/clientType";
 //
 import {randomNumber} from "../services/tools";
 import {FilterInput} from "../components/FilterInput";
 import {filterType} from "../type/filterType";
-
-const URLclient: string = "http://localhost:3000/clients";
 
 export const Clients = () => {
   const [clientList, setClientList] = useState<clientType[]>();
@@ -26,7 +25,7 @@ export const Clients = () => {
    * Fetch data using dataservices method, then set data in the react state
    */
   const dataFetch = () => {
-    dataServices.fetchData(URLclient).then((data) => setClientList(data));
+    dataServices.fetchData(dataURL.client).then((data) => setClientList(data));
   };
 
   // ----------------------------------------------------------------------------
@@ -41,12 +40,12 @@ export const Clients = () => {
       ...data,
       id: randomNumber(),
     };
-    dataServices.postData(URLclient, addedID).then(() => dataFetch());
+    dataServices.postData(dataURL.client, addedID).then(() => dataFetch());
   };
   // ----------------------------------------------------------------------------
 
   const dataPatch = (id: number, data: any) => {
-    dataServices.patchData(URLclient, id, data).then(() => dataFetch());
+    dataServices.patchData(dataURL.client, id, data).then(() => dataFetch());
   };
 
   // ----------------------------------------------------------------------------
@@ -57,7 +56,7 @@ export const Clients = () => {
    * @param id client id coming from clientUnit map
    */
   const dataDelete = (id: number) => {
-    dataServices.deleteData(URLclient, id).then(() => dataFetch());
+    dataServices.deleteData(dataURL.client, id).then(() => dataFetch());
   };
 
   // ----------------------------------------------------------------------------
