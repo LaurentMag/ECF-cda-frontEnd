@@ -20,8 +20,8 @@ export const Modal = (props: propsType) => {
   const [clientList, setClientList] = useState<clientType[]>();
 
   /**
-   * create a new date and transform it into YYYY-MM-DD to be able to be apply it to the date input
-   * Add on day to the current date before return it
+   * create a new date and transform it into YYYY-MM-DD to be able to apply it to the date input
+   * Add one day to the current date before return it
    * @returns return a date in format YYYY-MM-DD
    */
   const changeDate = (): string => {
@@ -84,8 +84,8 @@ export const Modal = (props: propsType) => {
     dataServices.fetchData(dataURL.client).then((data) => setClientList(data));
   };
   /**
-   * retrice data send from Clientinput, insert an ID and pass to to the REST POST
-   * dataService method to create a client
+   * retrice data send from location, insert an ID and pass to to the REST POST
+   * dataService method to create a location
    * @param data
    */
   const dataAddLocation = (data: locationType) => {
@@ -157,7 +157,8 @@ export const Modal = (props: propsType) => {
   // ---------------------------
   /**
    * Modal validation button press
-   * create the location object in the "data base / json server"
+   * create the location object in the "data base / json server". Patch vehicle list to change aviability status.
+   * Close the modal
    * @param e button mouse click event
    */
   const handleModalvalidateButton = (e: React.MouseEvent<HTMLButtonElement>) => {
