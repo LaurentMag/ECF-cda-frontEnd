@@ -18,3 +18,5 @@
   start the json server on port 3000 by defaut
 - npm start
   to run the app
+
+Licence : CC-BY-NC
