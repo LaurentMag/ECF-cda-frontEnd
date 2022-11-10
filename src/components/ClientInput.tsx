@@ -1,31 +1,34 @@
 import React, {Fragment, useEffect, useState} from "react";
-import {clientTypeNoID} from "../type/clientType";
+import {clientType, clientTypeNoID} from "../type/clientType";
+import {Button} from "./Button";
+//
+import {BiCheckSquare} from "react-icons/bi";
+import {BiArrowBack} from "react-icons/bi";
 
 type propsType = {
   headerText: string;
+  isEdit: boolean;
   //
-  nom: string;
-  prenom: string;
-  dateDeNaissance: string;
-  email: string;
-  telephone: string;
-  //
-  styleTopWrapper: string;
-  styleFormContainer: string;
-  styleInputAndLabel: string;
+  client: clientType;
   //
   addData: Function;
+  switchEditMode: Function;
+  //
+  styleSectionMainContainer: string;
+  styleFormContainer: string;
+  styleSectionWrapper: string;
+  styleInputAndLabel: string;
 };
 
 export const ClientInput = (props: propsType) => {
   // set client without ID and get value sent from props allow to have a moduable input component
   // and use it as much for client creation and client edition ( since all input will be the sames )
   const [inputState, setInputState] = useState<clientTypeNoID>({
-    nom: props.nom,
-    prenom: props.prenom,
-    dateDeNaissance: props.dateDeNaissance,
-    email: props.email,
-    telephone: props.telephone,
+    nom: props.client.nom,
+    prenom: props.client.prenom,
+    dateDeNaissance: props.client.dateDeNaissance,
+    email: props.client.email,
+    telephone: props.client.telephone,
   });
 
   // ------------------------------------------------------------------
@@ -57,69 +60,106 @@ export const ClientInput = (props: propsType) => {
   };
 
   // ------------------------------------------------------------------
+  /**
+   * switch the edit mod to show or hide the unit edition form
+   * @param e event from button click event
+   */
+  const handleEditChange = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    props.switchEditMode();
+  };
+
+  // ------------------------------------------------------------------
   // ------------------------------------------------------------------
   return (
     <Fragment>
-      <section className={`${props.styleTopWrapper}`}>
-        <h2>{props.headerText}</h2>
+      <section className={`${props.styleSectionMainContainer}`}>
+        {/* check if headerText is empty (so false), if so */}
+        {!props.isEdit && <h2>{props.headerText}</h2>}
         <form
           onSubmit={handleSubmit}
           className={`${props.styleFormContainer}`}>
-          <section>
-            <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="nomID">Nom : </label>
-              <input
-                onChange={handleInputChange}
-                id="nomID"
-                type="text"
-                name="nom"
-                value={inputState.nom}></input>
+          <section className={`${props.styleSectionWrapper}`}>
+            <div>
+              <div className={`${props.styleInputAndLabel}`}>
+                <label htmlFor="nomID">Nom : </label>
+                <input
+                  onChange={handleInputChange}
+                  id="nomID"
+                  type="text"
+                  name="nom"
+                  value={inputState.nom}></input>
+              </div>
+
+              <div className={`${props.styleInputAndLabel}`}>
+                <label htmlFor="prenomID">Prenom : </label>
+                <input
+                  onChange={handleInputChange}
+                  id="prenomID"
+                  type="text"
+                  name="prenom"
+                  value={inputState.prenom}></input>
+              </div>
             </div>
 
-            <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="prenomID">Prenom : </label>
-              <input
-                onChange={handleInputChange}
-                id="prenomID"
-                type="text"
-                name="prenom"
-                value={inputState.prenom}></input>
+            <div>
+              <div className={`${props.styleInputAndLabel}`}>
+                <label htmlFor="naissanceID"> Naissance : </label>
+                <input
+                  onChange={handleInputChange}
+                  id="naissanceID"
+                  type="date"
+                  name="dateDeNaissance"
+                  value={inputState.dateDeNaissance}></input>
+              </div>
+
+              <div className={`${props.styleInputAndLabel}`}>
+                <label htmlFor="emailID"> Email : </label>
+                <input
+                  onChange={handleInputChange}
+                  id="emailID"
+                  type="email"
+                  name="email"
+                  value={inputState.email}></input>
+              </div>
+
+              <div className={`${props.styleInputAndLabel}`}>
+                <label htmlFor="telID"> Téléphone : </label>
+                <input
+                  onChange={handleInputChange}
+                  id="telID"
+                  type="text"
+                  name="telephone"
+                  value={inputState.telephone}></input>
+              </div>
             </div>
           </section>
 
-          <section>
-            <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="naissanceID"> Naissance : </label>
-              <input
-                onChange={handleInputChange}
-                id="naissanceID"
-                type="date"
-                name="dateDeNaissance"
-                value={inputState.dateDeNaissance}></input>
+          {!props.isEdit ? (
+            <div>
+              <Button
+                content={<BiCheckSquare className="icon-style" />}
+                extraCssClass={"accept"}
+                handleClick={() => {}}
+                disabled={false}
+              />
             </div>
-
-            <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="emailID"> Email : </label>
-              <input
-                onChange={handleInputChange}
-                id="emailID"
-                type="email"
-                name="email"
-                value={inputState.email}></input>
-            </div>
-
-            <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="telID"> Téléphone : </label>
-              <input
-                onChange={handleInputChange}
-                id="telID"
-                type="text"
-                name="telephone"
-                value={inputState.telephone}></input>
-            </div>
-          </section>
-
-          <button className="general-button">Valider</button>
+          ) : (
+            <section className="element-unit__section-button client-section-button-surcharge">
+              <Button
+                content={<BiArrowBack className="icon-style" />}
+                extraCssClass={""}
+                handleClick={handleEditChange}
+                disabled={false}
+              />
+              <Button
+                content={<BiCheckSquare className="icon-style" />}
+                extraCssClass={"accept"}
+                handleClick={() => {}}
+                disabled={false}
+              />
+            </section>
+          )}
         </form>
       </section>
     </Fragment>

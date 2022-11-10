@@ -1,0 +1,33 @@
+.client-unit__container {
+  @include flex-modulable(row, center, null, 1rem);
+  flex-wrap: wrap;
+
+  margin-block: 12px;
+  padding-block: 20px;
+  padding-inline: min(5%, 70px);
+
+  background-color: rgb(187, 187, 187);
+  border-radius: $border-radius-element-default;
+  box-shadow: $box-shadow-element-default;
+
+  width: min(95%, 55rem);
+}
+
+// ------------------------------------------------------------------
+
+.client-unit__info-wrapper {
+  @include grid-column-repeat-auto(auto-fit, 190px, 1fr);
+  @include grid-gap(1rem);
+  width: 83%;
+}
+
+// ------------------------------------------------------------------
+
+.client-unit__one-info-stack {
+  display: grid;
+  row-gap: 0.65rem;
+  p {
+    @include grid-column(0.5fr 1fr);
+    justify-content: space-between;
+  }
+}

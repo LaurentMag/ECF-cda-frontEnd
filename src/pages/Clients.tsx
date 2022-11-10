@@ -34,7 +34,7 @@ export const Clients = () => {
   // ----------------------------------------------------------------------------
 
   /**
-   * retrice data send from Clientinput, insert an ID and pass to to the REST POST
+   * retrive data send from Clientinput, insert an ID and pass to to the REST POST
    * dataService method to create a client
    * @param data
    */
@@ -80,20 +80,25 @@ export const Clients = () => {
     <Fragment>
       <section className="client__display-container">
         <ClientInput
-          /* TEXT */
           headerText="Nouveau Client : "
-          /* STYLE */
-          styleTopWrapper={"client__main-form-container-wrapper "}
-          styleFormContainer={"client__main-form-container"}
-          styleInputAndLabel={"label-input"}
+          isEdit={false}
           /* CLIENT DATA */
-          nom={""}
-          prenom={""}
-          dateDeNaissance={""}
-          email={""}
-          telephone={""}
+          client={{
+            id: 0,
+            nom: "",
+            prenom: "",
+            dateDeNaissance: "",
+            email: "",
+            telephone: "",
+          }}
           /* work on data */
           addData={dataAdd}
+          switchEditMode={() => {}}
+          /* STYLE */
+          styleSectionMainContainer={"input__main-container"}
+          styleFormContainer={"input__form-element"}
+          styleSectionWrapper={"input_wrapper"}
+          styleInputAndLabel={"label-input"}
         />
 
         <FilterInput
@@ -109,12 +114,7 @@ export const Clients = () => {
             return (
               <ClientUnit
                 key={client.id}
-                id={client.id}
-                nom={client.nom}
-                prenom={client.prenom}
-                dateDeNaissance={client.dateDeNaissance}
-                email={client.email}
-                telephone={client.telephone}
+                client={client}
                 dataDelete={dataDelete}
                 dataToPatch={dataPatch}
               />

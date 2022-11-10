@@ -37,7 +37,7 @@ export const Modal = (props: propsType) => {
   });
 
   // ---------------------------
-  // update locationObj once the modalInput state has change to retrice the correct information
+  // update locationObj once the modalInput state has change to retrive the correct information
   // so the correct pricing  calculation based on selected dates
   useEffect(() => {
     handleLocationObjectCreation(
@@ -84,7 +84,7 @@ export const Modal = (props: propsType) => {
     dataServices.fetchData(dataURL.client).then((data) => setClientList(data));
   };
   /**
-   * retrice data send from location, insert an ID and pass to to the REST POST
+   * retrive data send from location, insert an ID and pass to to the REST POST
    * dataService method to create a location
    * @param data
    */

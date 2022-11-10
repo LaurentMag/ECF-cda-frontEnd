@@ -31,7 +31,7 @@ export const Vehicules = () => {
   };
   // ----------------------------------------------------------------------------
   /**
-   * retrice data send from Clientinput, insert an ID and pass to to the REST POST
+   * retrive data send from Clientinput, insert an ID and pass to to the REST POST
    * dataService method to create a client
    * @param data
    */
@@ -85,11 +85,13 @@ export const Vehicules = () => {
         <VehiculeInput
           /* TEXT */
           headerText="Nouveau Vehicule : "
+          isEdit={false}
           /* STYLE */
-          styleTopWrapper={"client__main-form-container-wrapper"}
-          styleFormContainer={"client__main-form-container"}
+          styleSectionMainContainer={"input__main-container"}
+          styleFormContainer={"input__form-element"}
+          styleSectionWrapper={"input_wrapper"}
           styleInputAndLabel={"label-input"}
-          /* CLIENT DATA */
+          /* VEHICLE DATA */
           vehicle={{
             id: 0,
             marque: "",

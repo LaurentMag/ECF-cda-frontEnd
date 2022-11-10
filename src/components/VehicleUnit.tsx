@@ -3,6 +3,10 @@ import {vehicleType, vehicleTypeNoID} from "../type/vehicleType";
 import {VehiculeInput} from "./VehiculeInput";
 
 import VehiclePic from "./../assets/voiture.jpg";
+import {Button} from "./Button";
+//
+import {BiEraser} from "react-icons/bi";
+import {BiPencil} from "react-icons/bi";
 
 type propsType = {
   vehicle: vehicleType;
@@ -43,8 +47,8 @@ export const VehicleUnit = (props: propsType) => {
 
   return (
     <section
-      className={`Vehicle__unit-main-container 
-      ${props.vehicle.disponible ? "vehicle-default-bg" : "vehicle_rented-bg"}`}>
+      className={`vehicle__unit-container ${isEdit ? "edition_mode" : ""} 
+                ${props.vehicle.disponible ? "" : "vehicle_rented-bg"}`}>
       <figure>
         <img
           className="general_image"
@@ -57,9 +61,11 @@ export const VehicleUnit = (props: propsType) => {
         <VehiculeInput
           /* TEXT */
           headerText=""
+          isEdit={true}
           /* STYLE */
-          styleTopWrapper={""}
-          styleFormContainer={""}
+          styleSectionMainContainer={"vehicle__edit-ignore_main-container"}
+          styleFormContainer={"input__form-element"}
+          styleSectionWrapper={"input_wrapper vehicle-input_wrapper-width-edit"}
           styleInputAndLabel={"label-input"}
           /* CLIENT DATA */
           vehicle={props.vehicle}
@@ -67,52 +73,56 @@ export const VehicleUnit = (props: propsType) => {
           addData={dataToUpdate}
         />
       ) : (
-        <section>
-          <div>
-            <p className="general_p-info-stack">
-              Model : <span className="general_span-info-stack">{props.vehicle.model}</span>
-            </p>
-            <p className="general_p-info-stack">
-              Marque : <span className="general_span-info-stack">{props.vehicle.marque}</span>
-            </p>
-          </div>
+        <section className="vehicle__unit-info-and-button-container">
+          <section className="vehicle__unit-info-wrapper">
+            <div>
+              <p className="general_p-info-stack">
+                Model : <span className="general_span-info-stack">{props.vehicle.model}</span>
+              </p>
+              <p className="general_p-info-stack">
+                Marque : <span className="general_span-info-stack">{props.vehicle.marque}</span>
+              </p>
+            </div>
 
-          <div>
-            <p className="general_p-info-stack">
-              Prix : <span className="general_span-info-stack">{props.vehicle.prixJournee}</span>
-            </p>
-            <p className="general_p-info-stack">
-              Plaque : <span className="general_span-info-stack">{props.vehicle.immatriculation}</span>
-            </p>
-            <p className="general_p-info-stack">
-              Type : <span className="general_span-info-stack">{props.vehicle.type}</span>
-            </p>
-            <p className="general_p-info-stack">
-              Etat : <span className="general_span-info-stack">{props.vehicle.etat}</span>
-            </p>
-          </div>
+            <div>
+              <p className="general_p-info-stack">
+                Prix : <span className="general_span-info-stack">{props.vehicle.prixJournee}</span>
+              </p>
+              <p className="general_p-info-stack">
+                Plaque : <span className="general_span-info-stack">{props.vehicle.immatriculation}</span>
+              </p>
+              <p className="general_p-info-stack">
+                Type : <span className="general_span-info-stack">{props.vehicle.type}</span>
+              </p>
+              <p className="general_p-info-stack">
+                Etat : <span className="general_span-info-stack">{props.vehicle.etat}</span>
+              </p>
+            </div>
 
-          <div className={`${props.vehicle.disponible ? "vehicle_aviable" : "vehicle_rented"}`}>
-            <p className="general_p-info-stack">
-              Disponibilité :{"   "}
-              <span className="general_span-info-stack">{props.vehicle.disponible ? "Disponible" : "Loué"}</span>
-            </p>
-          </div>
+            <div className={`${props.vehicle.disponible ? "vehicle_aviable" : "vehicle_rented"}`}>
+              <p className="general_p-info-stack">
+                Disponibilité :{"   "}
+                <span className="general_span-info-stack">{props.vehicle.disponible ? "Disponible" : "Loué"}</span>
+              </p>
+            </div>
+          </section>
+
+          <section className="element-unit__section-button vehicle-section-button-surcharge">
+            <Button
+              content={<BiPencil className="icon-style" />}
+              extraCssClass={"edit"}
+              handleClick={handleEdit}
+              disabled={false}
+            />
+            <Button
+              content={<BiEraser className="icon-style" />}
+              extraCssClass={"delete"}
+              handleClick={handleDeletion}
+              disabled={false}
+            />
+          </section>
         </section>
       )}
-
-      <section>
-        <button
-          className="general-button"
-          onClick={handleEdit}>
-          Edit
-        </button>
-        <button
-          className="general-button"
-          onClick={handleDeletion}>
-          Delete
-        </button>
-      </section>
     </section>
   );
 };

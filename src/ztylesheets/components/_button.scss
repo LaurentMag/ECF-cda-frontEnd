@@ -11,7 +11,26 @@
   @include button-press-effect(1px 2px 4px $button-comp-box-shadow-color);
 }
 
+.accept {
+  background-color: rgb(106, 124, 150);
+}
+
+.edit {
+  background-color: rgb(168, 149, 88);
+}
+
+.delete {
+  background-color: rgb(145, 75, 75);
+}
+
 .button_disabled {
   background-color: rgb(152, 152, 152);
   color: rgb(173, 172, 172);
+}
+
+// ---------------------------------
+// ICONS
+
+.icon-style {
+  font-size: 1.5rem;
 }

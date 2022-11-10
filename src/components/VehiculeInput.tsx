@@ -1,13 +1,19 @@
 import React, {Fragment, useEffect, useState} from "react";
 import {vehicleType, vehicleTypeNoID} from "../type/vehicleType";
+import {Button} from "./Button";
+//
+import {BiCheckSquare} from "react-icons/bi";
+import {BiArrowBack} from "react-icons/bi";
 
 type propsType = {
   headerText: string;
+  isEdit: boolean;
   //
   vehicle: vehicleType;
   //
-  styleTopWrapper: string;
+  styleSectionMainContainer: string;
   styleFormContainer: string;
+  styleSectionWrapper: string;
   styleInputAndLabel: string;
   //
   addData: Function;
@@ -73,98 +79,121 @@ export const VehiculeInput = (props: propsType) => {
   // ------------------------------------------------------------------
   return (
     <Fragment>
-      <section className={`${props.styleTopWrapper}`}>
-        <h2>{props.headerText}</h2>
+      <section className={`${props.styleSectionMainContainer}`}>
+        {props.headerText && <h2>{props.headerText}</h2>}
         <form
           onSubmit={handleSubmit}
           className={`${props.styleFormContainer}`}>
-          <section>
-            <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="marqueID">Marque : </label>
-              <input
-                onChange={handleInputChange}
-                id="marqueID"
-                type="text"
-                name="marque"
-                value={inputState.marque}></input>
+          <section className={`${props.styleSectionWrapper}`}>
+            <div>
+              <div className={`${props.styleInputAndLabel}`}>
+                <label htmlFor="marqueID">Marque : </label>
+                <input
+                  onChange={handleInputChange}
+                  id="marqueID"
+                  type="text"
+                  name="marque"
+                  value={inputState.marque}></input>
+              </div>
+
+              <div className={`${props.styleInputAndLabel}`}>
+                <label htmlFor="modelID">Model : </label>
+                <input
+                  onChange={handleInputChange}
+                  id="modelID"
+                  type="text"
+                  name="model"
+                  value={inputState.model}></input>
+              </div>
+              <div className={`${props.styleInputAndLabel}`}>
+                <label htmlFor="immatriculationID">Plaque : </label>
+                <input
+                  onChange={handleInputChange}
+                  id="immatriculationID"
+                  type="text"
+                  name="immatriculation"
+                  value={inputState.immatriculation}></input>
+              </div>
             </div>
-            <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="modelID">Model : </label>
-              <input
-                onChange={handleInputChange}
-                id="modelID"
-                type="text"
-                name="model"
-                value={inputState.model}></input>
+
+            <div>
+              <div className={`${props.styleInputAndLabel}`}>
+                <label htmlFor="typeID"> Type : </label>
+                <input
+                  onChange={handleInputChange}
+                  id="typeID"
+                  type="text"
+                  name="type"
+                  value={inputState.type}></input>
+              </div>
+              <div className={`${props.styleInputAndLabel}`}>
+                <label htmlFor="prixID"> Prix journée : </label>
+                <input
+                  onChange={handleInputChange}
+                  id="prixID"
+                  type="number"
+                  name="prix"
+                  value={inputState.prixJournee}></input>
+              </div>
+
+              <div className={`${props.styleInputAndLabel}`}>
+                <label htmlFor="etatID"> Etat : </label>
+                {/*  */}
+                <select
+                  className="input-select"
+                  id="etatID"
+                  name="etat"
+                  value={inputState.etat}
+                  onChange={handleSelectChange}>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                  <option value="E">E</option>
+                  <option value="F">F</option>
+                </select>
+                {/*  */}
+              </div>
             </div>
+
+            {props.isEdit && (
+              <div className={`vehicle_aviability-info ${props.styleInputAndLabel}`}>
+                <label htmlFor="disponibleID"> Disponibilité : </label>
+                <input
+                  onChange={handleInputChange}
+                  id="disponibleID"
+                  type="checkbox"
+                  name="disponible"
+                  checked={inputState.disponible}></input>
+              </div>
+            )}
           </section>
 
-          <section>
-            <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="typeID"> Type : </label>
-              <input
-                onChange={handleInputChange}
-                id="typeID"
-                type="text"
-                name="type"
-                value={inputState.type}></input>
+          {!props.isEdit ? (
+            <div>
+              <Button
+                content={<BiCheckSquare className="icon-style" />}
+                extraCssClass={"accept"}
+                handleClick={() => {}}
+                disabled={false}
+              />
             </div>
-
-            <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="immatriculationID">Immatriculation : </label>
-              <input
-                onChange={handleInputChange}
-                id="immatriculationID"
-                type="text"
-                name="immatriculation"
-                value={inputState.immatriculation}></input>
-            </div>
-          </section>
-
-          <section>
-            <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="etatID"> Etat : </label>
-              {/*  */}
-              <select
-                className="input-select"
-                id="etatID"
-                name="etat"
-                value={inputState.etat}
-                onChange={handleSelectChange}>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-                <option value="E">E</option>
-                <option value="F">F</option>
-              </select>
-              {/*  */}
-            </div>
-
-            <div className={`${props.styleInputAndLabel}`}>
-              <label htmlFor="prixID"> Prix journée : </label>
-              <input
-                onChange={handleInputChange}
-                id="prixID"
-                type="number"
-                name="prix"
-                value={inputState.prixJournee}></input>
-            </div>
-          </section>
-
-          {!props.headerText && (
-            <div className={``}>
-              <label htmlFor="disponibleID"> Disponibilité : </label>
-              <input
-                onChange={handleInputChange}
-                id="disponibleID"
-                type="checkbox"
-                name="disponible"
-                checked={inputState.disponible}></input>
-            </div>
+          ) : (
+            <section className="element-unit__section-button vehicle-section-button-surcharge">
+              <Button
+                content={<BiArrowBack className="icon-style" />}
+                extraCssClass={""}
+                handleClick={() => {}}
+                disabled={false}
+              />
+              <Button
+                content={<BiCheckSquare className="icon-style" />}
+                extraCssClass={"accept"}
+                handleClick={() => {}}
+                disabled={false}
+              />
+            </section>
           )}
-
-          <button className="general-button">Valider</button>
         </form>
       </section>
     </Fragment>

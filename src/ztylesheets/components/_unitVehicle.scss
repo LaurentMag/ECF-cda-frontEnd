@@ -1,0 +1,90 @@
+.vehicle__unit-container {
+  figure {
+    align-self: center;
+    width: min(95%, 200px);
+    img {
+      border-radius: $border-radius-element-default;
+    }
+  }
+
+  // @include flex-modulable(row, center, null, 1rem);
+  // flex-wrap: wrap;
+
+  // DEFAULT - MOBILE
+  @include flex-modulable(column, null, null, 1rem);
+  flex-wrap: wrap;
+  // MEDIA QUERY : DESKTOP =================
+  @media only screen and (min-width: 633px) {
+    @include flex-modulable(row, center, null, 1rem);
+  }
+
+  width: min(95%, 60rem);
+
+  margin-block: 20px;
+  padding-block: 15px;
+  padding-inline: 20px;
+
+  background-color: rgb(187, 187, 187);
+  border-radius: $border-radius-element-default;
+  box-shadow: $box-shadow-element-default;
+}
+
+.vehicle__unit-info-and-button-container {
+  width: 75%;
+  @include flex-modulable(null, space-between, null, 1rem);
+  flex-wrap: wrap;
+
+  // MEDIA QUERY : DESKTOP =============================
+  @media only screen and (min-width: 792px) {
+    button {
+      width: fit-content;
+    }
+  }
+}
+
+// ------------------------------------------------------------------
+.vehicle__unit-info-wrapper {
+  @include grid-column-repeat-auto(auto-fit, 200px, 1fr);
+  width: 95%;
+
+  // A DIV WITH X LABEL_INPUT INSIDE
+  > div:nth-of-type(1) {
+    display: grid;
+    grid-template-rows: min-content;
+    row-gap: 0.4rem;
+  }
+  > div:nth-of-type(2) {
+    display: grid;
+    row-gap: 0.4rem;
+  }
+
+  // MEDIA QUERY : DESKTOP =================
+  @media only screen and (min-width: 633px) {
+    width: 80%;
+  }
+}
+
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+.vehicle_aviability-info {
+  padding-block-start: 0.6rem;
+}
+.vehicle_aviable {
+  span {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: rgb(48, 120, 48);
+  }
+}
+
+.vehicle_rented {
+  span {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: rgb(131, 47, 47);
+  }
+}
+
+.vehicle_rented-bg {
+  background-color: rgb(196, 159, 159);
+}
