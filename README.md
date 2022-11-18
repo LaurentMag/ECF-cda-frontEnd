@@ -1,5 +1,8 @@
 # Getting Started with ECF FRONT
 
+Subject : rental card app, to be used by employee
+CRUD (client & cars ) & rental location feature with price calculation
+
 ## Used in this project :
 
 - React
