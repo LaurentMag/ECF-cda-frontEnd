@@ -1,10 +1,10 @@
 export type locationType = {
-  id: number;
+  id: string;
   dateDebut: string;
   dateFin: string;
-  prix: number;
+  prixTotal: number;
   client: {
-    id: number;
+    id: string;
     nom: string;
     prenom: string;
     dateDeNaissance: string;
@@ -12,9 +12,9 @@ export type locationType = {
     telephone: string;
   };
   voiture: {
-    id: number;
+    id: string;
     marque: string;
-    model: string;
+    modele: string;
     immatriculation: string;
     etat: string;
     prixJournee: number;

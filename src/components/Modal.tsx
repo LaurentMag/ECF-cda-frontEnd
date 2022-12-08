@@ -39,19 +39,21 @@ export const Modal = (props: propsType) => {
   // ---------------------------
   // update locationObj once the modalInput state has change to retrive the correct information
   // so the correct pricing  calculation based on selected dates
-  useEffect(() => {
-    handleLocationObjectCreation(
-      tools.rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee)
-    );
-  }, [modalInput]);
+
+  // DISABLE PRICE CALCULATION WITH JAVA BACK
+  // useEffect(() => {
+  //   handleLocationObjectCreation(
+  //     tools.rentalPriceCalculation(modalInput.date1, modalInput.date2, props.vehicle.prixJournee)
+  //   );
+  // }, [modalInput]);
 
   const [locationObj, setLocationObj] = useState<locationType>({
-    id: 0,
+    id: "0",
     dateDebut: "",
     dateFin: "",
-    prix: props.vehicle.prixJournee,
+    prixTotal: 0,
     client: {
-      id: 0,
+      id: "0",
       nom: "",
       prenom: "",
       dateDeNaissance: "",
@@ -59,9 +61,9 @@ export const Modal = (props: propsType) => {
       telephone: "",
     },
     voiture: {
-      id: 0,
+      id: "0",
       marque: "",
-      model: "",
+      modele: "",
       immatriculation: "",
       etat: "",
       prixJournee: 0,
@@ -137,13 +139,13 @@ export const Modal = (props: propsType) => {
   const handleLocationObjectCreation = (priceParam: number) => {
     if (clientList) {
       const client: clientType[] = clientList.filter((client) => {
-        return client.id == modalInput.clientID;
+        return client.id == String(modalInput.clientID);
       });
 
       setLocationObj((prev) => {
         return {
           ...prev,
-          id: tools.randomNumber(),
+          id: String(tools.randomNumber()),
           prix: priceParam,
           dateDebut: modalInput.date1,
           dateFin: modalInput.date2,
