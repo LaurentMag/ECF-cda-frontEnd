@@ -39,7 +39,7 @@ export const Vehicules = () => {
     console.log(data);
     const addedID = {
       ...data,
-      id: tools.randomNumber(),
+      id: String(tools.randomNumber()),
     };
     dataServices.postData(dataURL.vehicles, addedID).then(() => dataFetch());
   };
@@ -93,9 +93,9 @@ export const Vehicules = () => {
           styleInputAndLabel={"label-input"}
           /* VEHICLE DATA */
           vehicle={{
-            id: 0,
+            id: "0",
             marque: "",
-            model: "",
+            modele: "",
             immatriculation: "",
             etat: "",
             prixJournee: 0,

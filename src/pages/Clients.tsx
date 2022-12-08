@@ -41,7 +41,7 @@ export const Clients = () => {
   const dataAdd = (data: clientTypeNoID) => {
     const addedID = {
       ...data,
-      id: tools.randomNumber(),
+      id: String(tools.randomNumber()),
     };
     dataServices.postData(dataURL.client, addedID).then(() => dataFetch());
   };
@@ -84,7 +84,7 @@ export const Clients = () => {
           isEdit={false}
           /* CLIENT DATA */
           client={{
-            id: 0,
+            id: "0",
             nom: "",
             prenom: "",
             dateDeNaissance: "",

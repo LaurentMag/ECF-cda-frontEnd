@@ -22,7 +22,10 @@ class DataServices {
     return fetch(`${url}`, {
       method: "POST",
       body: JSON.stringify(data),
-      headers: {"Content-Type": "application/json"},
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:8080",
+      },
     });
   };
 
@@ -37,7 +40,10 @@ class DataServices {
     return fetch(`${url}/${id}`, {
       method: "PUT",
       body: JSON.stringify(data),
-      headers: {"Content-Type": "application-json"},
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:8080",
+      },
     }).then((res) => res.json);
   };
 
@@ -52,7 +58,10 @@ class DataServices {
     return fetch(`${url}/${id}`, {
       method: "PATCH",
       body: JSON.stringify(data),
-      headers: {"Content-Type": "application/json"},
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:8080",
+      },
     }).then((res) => res.json());
   };
 

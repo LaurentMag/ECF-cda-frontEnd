@@ -11,7 +11,7 @@ export type vehicleType = {
 
 export type vehicleTypeNoID = {
   marque: string;
-  model: string;
+  modele: string;
   immatriculation: string;
   etat: string;
   prixJournee: number;

@@ -77,7 +77,7 @@ export const VehicleUnit = (props: propsType) => {
           <section className="vehicle__unit-info-wrapper">
             <div>
               <p className="general_p-info-stack">
-                Model : <span className="general_span-info-stack">{props.vehicle.model}</span>
+                Model : <span className="general_span-info-stack">{props.vehicle.modele}</span>
               </p>
               <p className="general_p-info-stack">
                 Marque : <span className="general_span-info-stack">{props.vehicle.marque}</span>

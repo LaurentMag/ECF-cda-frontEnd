@@ -20,7 +20,7 @@ export const LocationResumeUnit = (props: propsType) => {
         <section className="">
           <div>
             <p className="general_p-info-stack">
-              Model : <span className="general_span-info-stack">{props.locationObject.voiture.model}</span>
+              Model : <span className="general_span-info-stack">{props.locationObject.voiture.modele}</span>
             </p>
             <p className="general_p-info-stack">
               Marque : <span className="general_span-info-stack">{props.locationObject.voiture.marque}</span>

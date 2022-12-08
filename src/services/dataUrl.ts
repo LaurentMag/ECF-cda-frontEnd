@@ -7,7 +7,7 @@
 // ajout des URL pour le back JAVA
 class dataURLClass {
   client = "http://localhost:8080/clients";
-  vehicles = "http://localhost:8080/voitures";
+  vehicles = "http://localhost:8080/vehicules";
   location = "http://localhost:8080/locations";
 }
 

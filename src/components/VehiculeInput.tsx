@@ -24,7 +24,7 @@ export const VehiculeInput = (props: propsType) => {
   // and use it as much for client creation and client edition ( since all input will be the sames )
   const [inputState, setInputState] = useState<vehicleTypeNoID>({
     marque: props.vehicle.marque,
-    model: props.vehicle.model,
+    modele: props.vehicle.modele,
     immatriculation: props.vehicle.immatriculation,
     etat: props.vehicle.etat,
     prixJournee: props.vehicle.prixJournee,
@@ -103,7 +103,7 @@ export const VehiculeInput = (props: propsType) => {
                   id="modelID"
                   type="text"
                   name="model"
-                  value={inputState.model}></input>
+                  value={inputState.modele}></input>
               </div>
               <div className={`${props.styleInputAndLabel}`}>
                 <label htmlFor="immatriculationID">Plaque : </label>

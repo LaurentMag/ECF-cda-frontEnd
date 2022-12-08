@@ -8,11 +8,11 @@ export const Navbar = () => {
         to="/"
         className="navlink__logo">
         <figure>
-          <img
+          {/* <img
             className="general_image"
             src={require("../assets/localib-logo-nobg.png")}
             alt=""
-          />
+          /> */}
         </figure>
       </NavLink>
       <ul>
